@@ -64,15 +64,15 @@
             </div>
             <div class="col-12 col-md-6">
                 <div>
-                    <p class="text-center">Contact Person: <span>@Model.DriversMain.ContactPerson</span></p>
+                    <p class="text-center">Driver Name: <span>@Model.DriversMain.ContactPerson</span></p>
                 </div>
             </div>
 
-            <div class="col-12 col-md-6">
+            @* <div class="col-12 col-md-6">
                 <div>
                     <p class="text-center">Mobile: <span>@Model.DriversMain.Mobile</span></p>
                 </div>
-            </div>
+            </div> *@
             <div class="col-12 col-md-6">
                 <div>
                     <p class="text-center">Telephone:<span>@Model.DriversMain.Telephone</span> </p>
@@ -139,14 +139,14 @@
                             if (response.data.code == 404) {
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Lỗi',
+                                    title: 'Error',
                                     text: `${response.data.message}`,
                                     confirmButtonText: 'OK'
                                 });
                             } else {
                                 Swal.fire({
                                     icon: 'success',
-                                    title: 'Thành công',
+                                    title: 'Success',
                                     text: `${response.data.message}`,
                                     confirmButtonText: 'OK',
                                 });
@@ -161,8 +161,8 @@
                         console.error(error);
                         Swal.fire({
                             icon: 'error',
-                            title: 'Lỗi',
-                            text: 'Đã có lỗi xảy ra',
+                            title: 'Error',
+                            text: 'An error has occurred',
                             confirmButtonText: 'OK'
                         });
                     }

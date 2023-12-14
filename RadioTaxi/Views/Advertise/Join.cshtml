@@ -147,12 +147,12 @@
 					<input class="form-control" placeholder="Address" type="text" v-model="Address" />
 				</div>
 			</div>
-			<div class="col-12 col-md-4">
+			@* <div class="col-12 col-md-4">
 				<div class="mb-3">
 					<label class="form-label">Mobile</label>
 					<input class="form-control" placeholder="Mobile" type="text" v-model="Mobile" />
 				</div>
-			</div>
+			</div> *@
 			<div class="col-12 col-md-4">
 				<div class="mb-3">
 					<label class="form-label">Telephone</label>
@@ -223,7 +223,7 @@
 				CompanyName: "",
 				Designation: "",
 				Address: "",
-				Mobile: "",
+				//Mobile: "",
 				Telephone: "",
 				FaxNumber: "",
 				Description: "",
@@ -276,7 +276,7 @@
 						formData.append('CompanyName', this.CompanyName);
 						formData.append('Designation', this.Designation);
 						formData.append('Address', this.Address);
-						formData.append('Mobile', this.Mobile);
+						//formData.append('Mobile', this.Mobile);
 						formData.append('Telephone', this.Telephone);
 						formData.append('FaxNumber', this.FaxNumber);
 						formData.append('Email', this.Email);
@@ -292,8 +292,8 @@
 								if (response.data.code == 200) {
 									Swal.fire({
 										icon: 'success',
-										title: 'Thành công',
-										text: 'Đã lưu thành công',
+										title: 'Success',
+										text: 'Saved successfully',
 										confirmButtonText: 'OK'
 									}).then((result) => {
 										if (result.isConfirmed) {
@@ -304,7 +304,7 @@
 								} else {
 									Swal.fire({
 										icon: 'error',
-										title: 'Lỗi',
+										title: 'Error',
 										text: `${response.data.message}`,
 										confirmButtonText: 'OK'
 									});
@@ -316,9 +316,9 @@
 						console.error(error);
 						Swal.fire({
 							icon: 'error',
-							title: 'Lỗi',
-							text: 'Đã có lỗi xảy ra',
-							confirmButtonText: 'OK'
+                            title: 'Error',
+                            text: 'An error has occurred',
+                            confirmButtonText: 'OK'
 						});
 					}
 				},
