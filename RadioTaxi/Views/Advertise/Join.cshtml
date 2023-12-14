@@ -1,0 +1,330 @@
+﻿@{
+	ViewData["Title"] = "Advertise Join";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+			<div class="col-md-9 ftco-animate pb-5">
+				<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Advertise Join <i class="ion-ios-arrow-forward"></i></span></p>
+				<h1 class="mb-3 bread">Advertise Join</h1>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="ftco-section ftco-cart">
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+			<div class="col-md-7 text-center heading-section ftco-animate">
+				<span class="subheading">Advertise Price</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 ftco-animate">
+				<div class="car-list">
+					<table class="table">
+						<thead class="thead-primary">
+							<tr class="text-center">
+								<th>&nbsp;</th>
+								<th>&nbsp;</th>
+								<th class="bg-primary heading">Registration</th>
+								<th class="bg-dark heading">Driver</th>
+								<th class="bg-black heading">Advertisement</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="">
+								<td class="car-image"><div class="img" style="background-image:url(/images/car-1.jpg);"></div></td>
+								<td class="product-name">
+									<h3>Monthly</h3>
+
+								</td>
+
+								<td class="price">
+									<p class="btn-custom"><a href="#">Rent a car</a></p>
+									<div class="price-rate">
+										<h3>
+											<span class="num"><small class="currency">$</small> 15</span>
+											<span class="per">/per month</span>
+
+										</h3>
+									</div>
+								</td>
+
+								<td class="price">
+									<p class="btn-custom"><a href="#">Rent a car</a></p>
+									<div class="price-rate">
+										<h3>
+											<span class="num"><small class="currency">$</small> 10</span>
+											<span class="per">/per month</span>
+
+										</h3>
+									</div>
+								</td>
+
+								<td class="price">
+									<p class="btn-custom"><a href="#">Rent a car</a></p>
+									<div class="price-rate">
+										<h3>
+											<span class="num"><small class="currency">$</small> 15</span>
+											<span class="per">/per month</span>
+										</h3>
+									</div>
+								</td>
+							</tr><!-- END TR-->
+
+							<tr class="">
+								<td class="car-image"><div class="img" style="background-image:url(/images/car-2.jpg);"></div></td>
+								<td class="product-name">
+									<h3>Quarterly</h3>
+
+								</td>
+
+								<td class="price">
+									<p class="btn-custom"><a href="#">Rent a car</a></p>
+									<div class="price-rate">
+										<h3>
+											<span class="num"><small class="currency">$</small> 40</span>
+											<span class="per">/per quarterly</span>
+
+										</h3>
+									</div>
+								</td>
+
+								<td class="price">
+									<p class="btn-custom"><a href="#">Rent a car</a></p>
+									<div class="price-rate">
+										<h3>
+											<span class="num"><small class="currency">$</small> 25</span>
+											<span class="per">/per quarterly</span>
+										</h3>
+									</div>
+								</td>
+
+								<td class="price">
+									<p class="btn-custom"><a href="#">Rent a car</a></p>
+									<div class="price-rate">
+										<h3>
+											<span class="num"><small class="currency">$</small> 40</span>
+											<span class="per">/per quarterly</span>
+
+										</h3>
+									</div>
+								</td>
+							</tr><!-- END TR-->
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="ftco-section ftco-cart" id="advertise_vue">
+	<div class="container">
+		<div class="row justify-content-center mb-5">
+			<div class="col-md-7 text-center heading-section">
+				<h2 class="mb-3">Join NOW</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<div class="mb-3">
+					<label class="form-label">Company Name</label>
+					<input class="form-control" placeholder="Contact Person" type="text" v-model="CompanyName" />
+				</div>
+			</div>
+			<div class="col-12 col-md-6">
+				<div class="mb-3">
+					<label class="form-label">Designation</label>
+					<input class="form-control" placeholder="Designation" type="text" v-model="Designation" />
+				</div>
+			</div>
+			<div class="col-12 col-md-12">
+				<div class="mb-3">
+					<label class="form-label">Address</label>
+					<input class="form-control" placeholder="Address" type="text" v-model="Address" />
+				</div>
+			</div>
+			<div class="col-12 col-md-4">
+				<div class="mb-3">
+					<label class="form-label">Mobile</label>
+					<input class="form-control" placeholder="Mobile" type="text" v-model="Mobile" />
+				</div>
+			</div>
+			<div class="col-12 col-md-4">
+				<div class="mb-3">
+					<label class="form-label">Telephone</label>
+					<input class="form-control" placeholder="Telephone" type="text" v-model="Telephone" />
+				</div>
+			</div>
+			<div class="col-12 col-md-4">
+				<div class="mb-3">
+					<label class="form-label">Fax Number</label>
+					<input class="form-control" placeholder="Fax Number" type="text" v-model="FaxNumber" />
+				</div>
+			</div>
+			<div class="col-12 col-md-12">
+				<div class="mb-3">
+					<label class="form-label">Email</label>
+					<input class="form-control" placeholder="Email" type="text" v-model="Email" />
+				</div>
+			</div>
+			<div class="col-12 col-md-12">
+				<div class="mb-3">
+					<label class="form-label">Description</label>
+					<textarea id="editorMain" v-model="detailsCkName"> </textarea>
+
+				</div>
+			</div>
+			<div class="col-12 col-md-6">
+				<div class="mb-3">
+					<label class="form-label">Member Ship </label>
+					<select class="form-control" id="membership" v-model="PackageId">
+						<option value="0">Choose option</option>
+						<option value="1">Advertisement - $15.00/month</option>
+						<option value="2">Advertisement - $40.00/quarterly</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-12 col-md-6">
+				<div class="mb-3">
+					<label class="form-label">Payment Price </label>
+					<input class="form-control" id="paymentPrice" placeholder="Payment Price" type="text" readonly />
+
+				</div>
+			</div>
+			<div class="col-12">
+				<a class="btn btn-success" href="javascript:void(0)" v-on:click="addItems">Confirm</a>
+				<a class="btn btn-warning" href="javascript:void(0)">Reset</a>
+			</div>
+		</div>
+	</div>
+</section>
+@section Scripts {
+	<script src="~/lib/config/config_ckeditor.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#membership').change(function () {
+				var selectedPrice = parseFloat($(this).val());
+				$('#paymentPrice').val(selectedPrice.toFixed(2));
+			});
+		});
+	</script>
+	<script>
+		var advertise_vue = new Vue({
+			el: "#advertise_vue",
+			data: {
+				detailsCkName: "",
+				editor: "",
+				editorMain: "",
+
+				CompanyName: "",
+				Designation: "",
+				Address: "",
+				Mobile: "",
+				Telephone: "",
+				FaxNumber: "",
+				Description: "",
+				Email: "",
+				PackageId: "",
+			},
+			mounted() {
+				configureCKEditor('#editorMain', this, this.detailsCkName);
+
+			},
+			watch: {
+				
+				detailsCkName(newVal, oldVal) {
+					if (!this.editor && newVal !== oldVal) {
+						this.openEditor();
+					}
+				}
+			},
+			beforeDestroy() {
+				if (this.editor) {
+					this.editor.destroy();
+				}
+			},
+			methods: {
+				openEditor() {
+
+					if (!this.editor) {
+						configureCKEditor('#editorMain', this, this.detailsCkName || {});
+					}
+				},
+				destroyEditor() {
+					if (this.editor) {
+						this.editor.destroy();
+						this.editor = null;
+					}
+				},
+				initializeEditor() {
+					this.destroyEditor();
+					if ( this.detailsCkName == "") {
+						configureCKEditor('#editorMain', this, this.detailsCkName || {});
+
+					}
+				},
+
+				async addItems() {
+					try {
+
+						const formData = new FormData();
+
+						formData.append('CompanyName', this.CompanyName);
+						formData.append('Designation', this.Designation);
+						formData.append('Address', this.Address);
+						formData.append('Mobile', this.Mobile);
+						formData.append('Telephone', this.Telephone);
+						formData.append('FaxNumber', this.FaxNumber);
+						formData.append('Email', this.Email);
+						formData.append('Description', this.detailsCkName);
+						formData.append('PackageId', this.PackageId);
+
+						await axios.post('/advertise/add', formData,
+							{
+								headers: {
+									'Content-Type': 'multipart/form-data'
+								}
+							}).then((response) => {
+								if (response.data.code == 200) {
+									Swal.fire({
+										icon: 'success',
+										title: 'Thành công',
+										text: 'Đã lưu thành công',
+										confirmButtonText: 'OK'
+									}).then((result) => {
+										if (result.isConfirmed) {
+											window.location.reload();
+
+										}
+									});
+								} else {
+									Swal.fire({
+										icon: 'error',
+										title: 'Lỗi',
+										text: `${response.data.message}`,
+										confirmButtonText: 'OK'
+									});
+								}
+
+							});
+
+					} catch (error) {
+						console.error(error);
+						Swal.fire({
+							icon: 'error',
+							title: 'Lỗi',
+							text: 'Đã có lỗi xảy ra',
+							confirmButtonText: 'OK'
+						});
+					}
+				},
+			}
+		});
+	</script>
+
+}
+

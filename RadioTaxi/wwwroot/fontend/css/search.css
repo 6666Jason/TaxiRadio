@@ -1,0 +1,97 @@
+﻿#myMenu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background: #1089ff;
+}
+
+    #myMenu li {
+        padding: 12px;
+        color: #fff;
+        display: block;
+        cursor: pointer;
+    }
+
+        #myMenu li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+            #myMenu li:hover, #myMenu li a:hover {
+                background-color: #eee;
+                color: #000;
+            }
+
+    #myMenu img {
+        max-height: 120px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+.company-details p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+    .company-details p span {
+        color: #000;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+.w-90 {
+    width: 90%;
+}
+
+.form-group p {
+    margin-bottom: 4px !important;
+}
+
+.results:hover {
+    background: #fff;
+    color: #000;
+}
+
+    .results:hover label {
+        color: #000;
+    }
+
+    .results:hover p {
+        color: #000;
+    }
+
+
+.gradient-brand-color {
+    background-image: -webkit-linear-gradient(0deg, #376be6 0%, #6470ef 100%);
+    background-image: -ms-linear-gradient(0deg, #376be6 0%, #6470ef 100%);
+    color: #fff;
+}
+
+.contact-info__wrapper {
+    overflow: hidden;
+    border-radius: .625rem .625rem 0 0
+}
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(132,138,163,0.1) !important;
+}
+
+#img_contain {
+    border: 1px solid grey;
+    margin-top: 10px;
+    width: 520px;
+}
+
+#file-input {
+    margin-left: 7px;
+    padding: 10px;
+    background-color: gray;
+}
+
+#image-preview {
+    height: 320px;
+    width: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+}

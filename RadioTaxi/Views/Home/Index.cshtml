@@ -1,0 +1,232 @@
+﻿@model RadioTaxi.Models.ViewMainVM.ViewMainCRUD
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+@section Styles{
+    <link href="~/fontend/css/search.css" rel="stylesheet" />
+}
+<div class="container-fluid p-0 mb-5">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="/fontend/img/carousel-bg-1.jpg" alt="Image">
+                <div class="carousel-caption d-flex align-items-center">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center justify-content-lg-start">
+                            <div class="col-10 col-lg-7 text-center text-lg-start">
+                                <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Car Servicing //</h6>
+                                <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Công Ty ACB Luôn Có Những Siêu xe xịn Cho Quý Khách Hàng có một chuyến đi chơi trải nghiệm tốt nhất</h1>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i class="fa fa-arrow-right ms-3"></i></a>
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
+                                <img class="img-fluid" src="img/carousel-1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="/fontend/img/carousel-bg-2.jpg" alt="Image">
+                <div class="carousel-caption d-flex align-items-center">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-center justify-content-lg-start">
+                            <div class="col-10 col-lg-7 text-center text-lg-start">
+                                <h6 class="text-white text-uppercase mb-3 animated slideInDown">// Car Servicing //</h6>
+                                <h1 class="display-3 text-white mb-4 pb-3 animated slideInDown">Công Ty DEF Luôn chuẫn bị vệ sinh sẽ thật kĩ để qúy khách hàng có những chuyến đi thật thoải mái</h1>
+                                <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Learn More<i class="fa fa-arrow-right ms-3"></i></a>
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-flex animated zoomIn">
+                                <img class="img-fluid" src="img/carousel-2.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <h2 class="mb-2">Feeatured Company</h2>
+            </div>
+        </div>
+
+        <div class="row">
+
+            @if (Model != null)
+            {
+                if (Model.CompanyList != null)
+                {
+                    foreach (var items in Model.CompanyList)
+                    {
+                        <div class="col-12 col-md-3 mb-4">
+                            <div class="card">
+                                <img class="card-img-top" src="@items.ApplicationUserMain.AvatartPath" alt="@items.ApplicationUserMain.FullName">
+                                <div class="card-body">
+                                    <h5 class="card-title">Company Name: @items.CompanyName</h5>
+                                    <p class="card-text">Email: @items.Email</p>
+                                    <p class="card-text">Telephone: @items.Telephone</p>
+                                    <a href="/company/details/@items.ID" class="btn btn-primary">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+    </div>
+</section>
+<section class="ftco-section ftco-no-pt mb-4 mt-4">
+    <div class="container">
+        <div class="mb-5">
+            <label class="row justify-content-center">Search Driver</label>
+            <div class="p-1 bg-light rounded rounded-pill shadow-sm ">
+                <div class="input-group">
+                    <input id="search" type="search" placeholder="address,city..." aria-describedby="button-addon1" style="background: transparent !important" class="form-control border-0 bg-light">
+                    <div class="input-group-append">
+                        <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                    </div>
+
+                </div>
+
+            </div>
+            <ul id="myMenu" class="mb-4">
+            </ul>
+        </div>
+        
+</section>
+
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <h2 class="mb-2">Feeatured Driver</h2>
+            </div>
+        </div>
+        <div class="row">
+
+            @if (Model != null)
+            {
+                if (Model.DriversList != null)
+                {
+                    foreach (var items in Model.DriversList)
+                    {
+                        <div class="col-12 col-md-3 mb-4">
+                            <div class="card">
+                                <img class="card-img-top" src="@items.ApplicationUserMain.AvatartPath" alt="@items.ApplicationUserMain.FullName">
+                                <div class="card-body">
+                                    <h5 class="card-title">Contact person: @items.ContactPerson</h5>
+                                    <p class="card-text">Email: @items.Email</p>
+                                    <p class="card-text">Telephone: @items.Telephone</p>
+                                    <a href="/driver/details/@items.ID" class="btn btn-primary">View More</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+       
+    </div>
+</section>
+
+@if (Model != null && Model.FeedBackList != null)
+{
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <h6 class="text-primary text-uppercase">// Feedback Khách hàng //</h6>
+                <h1 class="mb-5">Our Clients Say!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel position-relative">
+                @foreach(var items in Model.FeedBackList)
+                {
+                    <div class="testimonial-item text-center">
+                        <img class="bg-light rounded-circle p-2 mx-auto mb-3" src="@items.ApplicationUserMain.AvatartPath" style="width: 80px; height: 80px;">
+                        <h5 class="mb-0">@items.ApplicationUserMain.FullName</h5>
+                        <p>@items.Type</p>
+                        <div class="testimonial-text bg-light text-center p-4">
+                            <p class="mb-0">@items.Description</p>
+                        </div>
+                    </div>
+                }
+               
+                
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#myMenu").empty();
+            $("#search").on("input", function () {
+                var searchQuery = $(this).val();
+                if (searchQuery.length > 1) {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/search/driver",
+                        data: { search: searchQuery },
+                        dataType: "json",
+                        success: function (data) {
+                            displaySearchResults(data);
+                        },
+                        error: function () {
+                            console.log("Lỗi trong quá trình tìm kiếm.");
+                        }
+                    });
+                } else {
+                    $("#myMenu").empty();
+                }
+            });
+        });
+        function displaySearchResults(data) {
+            var recordCount = data.length;
+            $("#myMenu").empty();
+
+            for (var i = 0; i < data.length; i++) {
+                var resultItem = data[i];
+                var resultHtml = '<li>' +
+                    '<a href="/driver/details/' + resultItem.id + '">' +
+                    '<div class="row align-items-center">' +
+                    '<div class="col-12 d-flex flex-column">' +
+                    '<p> Name:  ' + resultItem.contactPerson + '</p>' +
+                    '<p>City: ' + resultItem.city + '</p>' +
+                    '<p>Address: ' + resultItem.address + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</li>' +
+                    '<hr/>';
+
+
+                $("#myMenu").append(resultHtml);
+            }
+        }
+
+    </script>
+
+}

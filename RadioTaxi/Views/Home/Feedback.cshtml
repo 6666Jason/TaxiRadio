@@ -1,0 +1,151 @@
+﻿@model RadioTaxi.Models.ViewMainVM.ViewMainCRUD
+@{
+    ViewData["Title"] = "Feedback Page";
+}
+
+
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/fontend/img/carousel-bg-1.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Feedback</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Feedback</li>
+                </ol>
+            </nav>
+
+        </div>
+    </div>
+</div>
+<div class="container mt-3 mb-4" id="feedback_vue">
+    <div class="d-flex justify-content-center mb-5">
+        <div class=" text-center heading-section ftco-animate">
+            <span class="subheading">FeedBack</span>
+            <h2 class="mb-3">Feedback Us</h2>
+        </div>
+    </div>
+    <div class="contact__wrapper shadow-lg mt-n9">
+        <div class="row no-gutters">
+            <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
+                <h3 class="color--white mb-5">Feedback</h3>
+                
+            </div>
+
+            <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
+                <form v-on:submit.prevent="addFeedback" class="contact-form form-validate" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="name">Name</label>
+                                <input type="text" class="form-control" id="name" v-model="Name" placeholder="Jean" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label for="mobile">Mobile</label>
+                                <input type="tel" class="form-control" id="mobile" v-model="Mobile" placeholder="+32 71 123 456" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="email">Email</label>
+                                <input type="text" class="form-control" id="email" v-model="Email" placeholder="jean@dupont.com" required>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 mb-3">
+                            <div class="form-group">
+                                <label for="type">Type</label>
+                                <select class="form-select" id="type" v-model="Type">
+                                    <option value="Complaint">Complaint</option>
+                                    <option value="Suggestion">Suggestion</option>
+                                    <option value="Compliment">Compliment</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group">
+                                <label class="required-field" for="message">Description</label>
+                                <textarea class="form-control" id="message" v-model="Description" required rows="4" placeholder="Say something...."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 mb-3">
+                            <button type="submit" name="submit" class="btn btn-primary">Confirm</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <!-- End Contact Form Wrapper -->
+
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var feedback_vue = new Vue({
+            el: "#feedback_vue",
+            data:{
+                Name: "@Html.Raw(Model.ApplicationUserMain.FullName)",
+                Mobile: "@Html.Raw(Model.ApplicationUserMain.PhoneNumber)",
+                Email: "@Html.Raw(Model.ApplicationUserMain.Email)",
+                Type: "Complaint",
+                Description: "",
+            },
+            methods:{
+                addFeedback(){
+                    try {
+                        $('#loadingMore').fadeIn();
+
+                        let formData = new FormData();
+                        formData.append("Name", this.Name);
+                        formData.append("Mobile", this.Mobile);
+                        formData.append("Email", this.Email);
+                        formData.append("Type", this.Type);
+                        formData.append("Description", this.Description);
+                        axios.post("/feedback/add", formData, {
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            }
+                        }).then(response => {
+                            if (response.data.code == 404) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Lỗi',
+                                    text: `${response.data.message}`,
+                                    confirmButtonText: 'OK'
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Thành công',
+                                    text: `${response.data.message}`,
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        }).finally(() => {
+                            $('#loadingMore').fadeOut();
+                        });
+                    } catch (error) {
+                        console.error(error);
+                        $('#loadingMore').fadeOut();
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: 'Đã có lỗi xảy ra',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                   
+                }
+            }
+        });
+    </script>
+}

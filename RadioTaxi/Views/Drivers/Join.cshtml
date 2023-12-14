@@ -1,0 +1,298 @@
+﻿@model RadioTaxi.Models.DriversVM.DriversCRUD
+@{
+    ViewData["Title"] = "Drivers Join";
+}
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/super-build/ckeditor.js"></script>
+
+
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/fontend/img/carousel-bg-1.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Drivers Join</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Drivers Join</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section ftco-cart" id="drivers_vue">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ">
+                <h2 class="mb-3">Join NOW</h2>
+            </div>
+        </div>
+        @if (TempData["error"] != null)
+        {
+            <div class="text-danger text-center">
+                @TempData["error"]
+            </div>
+        }
+        <form method="post" action="/drivers/add" enctype="multipart/form-data" id="membershipForm">
+
+            <div class="row">
+             
+                <div class="col-12 ">
+                    <label class="form-label">Image Profile</label>
+
+                    <input  type='file' id="file-input" asp-for="Path" />
+                    <div id='img_contain'>
+                        <img id="image-preview" align='middle' src="/upload/avatar/blank_avatar.png" alt="your image" title='' />
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">Contact Person</label>
+                        <input class="form-control" placeholder="Contact Person" type="text" asp-for="ContactPerson" required />
+                    </div>
+                </div>
+                <div class="col-12 col-md-12">
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        <input class="form-control" placeholder="Address" type="text" asp-for="Address" required />
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input class="form-control" placeholder="Mobile" type="text" asp-for="Mobile" required />
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="mb-3">
+                        <label class="form-label">City</label>
+                        <input class="form-control" placeholder="City" type="text" asp-for="City" required />
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="mb-3">
+                        <label class="form-label">Telephone</label>
+                        <input class="form-control" placeholder="Telephone" type="text" asp-for="Telephone" required />
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" placeholder="Email" type="email" asp-for="Email" required />
+                    </div>
+                </div>
+                @if (ViewBag.role == null || ViewBag.role != "User")
+                {
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input class="form-control" placeholder="Password" type="password" asp-for="PasswordHash" required />
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input class="form-control" placeholder="Confirm Password" type="password" asp-for="ConfirmPassword" required />
+                        </div>
+                    </div>
+                }
+               
+
+
+                <div class="col-12 col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Member Ship </label>
+                        <select class="form-select" id="membership" asp-for="PackageId">
+                            <option value="0" >Choose option</option>
+                            @foreach (var items in ViewBag.price)
+                            {
+                                if (@items.Name == "Driver")
+                                {
+                                    <option value="@items.ID" data-price="@items.Price">@items.Name - $@items.Price/@items.Categories.Name</option>
+                                }
+                            }
+                           
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="mb-3">
+                        <label class="form-label">Payment Price </label>
+                        <input class="form-control" id="paymentPrice" placeholder="Payment Price" type="text" readonly />
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-success" href="javascript:void(0)" type="submit">Confirm</button>
+                    <a class="btn btn-warning" href="javascript:void(0)">Reset</a>
+                </div>
+            </div>
+        </form>
+     
+    </div>
+</section>
+@section Scripts {
+    <script src="~/lib/config/config_ckeditor.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#membershipForm').submit(function (event) {
+                var selectedValue = $('#membership').val();
+                if (selectedValue === '0') {
+                    event.preventDefault(); 
+                    alert('Please select a membership package.'); 
+                }
+            });
+            $('#membership').change(function () {
+                var selectedPrice = parseFloat($(this).find('option:selected').data('price'));
+                $('#paymentPrice').val(selectedPrice.toFixed(2));
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#image-preview').attr('src', e.target.result);
+                        $('#image-preview').hide();
+                        $('#image-preview').fadeIn(650);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#file-input").change(function () {
+                readURL(this);
+            });
+        });
+    </script>
+    <script>
+        var drivers_vue = new Vue({
+            el: "#drivers_vue",
+            data: {
+                ckName: "",
+                ckMain: "",
+                detailsCkName: "",
+                editor: "",
+                editorMain: "",
+
+                ContactPerson: "",
+                Address: "",
+                Mobile: "",
+                Telephone: "",
+                Email: "",
+                City: "",
+                PackageId: "",
+                Password: "",
+                ConfirmPass: "",
+            },
+            mounted() {
+                configureCKEditor('#editor', this, this.ckName);
+                configureCKEditor('#editorMain', this, this.detailsCkName);
+
+            },
+            watch: {
+                ckName(newVal, oldVal) {
+                    if (!this.editor && newVal !== oldVal) {
+                        this.openEditor();
+                    }
+                },
+                detailsCkName(newVal, oldVal) {
+                    if (!this.editor && newVal !== oldVal) {
+                        this.openEditor();
+                    }
+                }
+            },
+            beforeDestroy() {
+                if (this.editor) {
+                    this.editor.destroy();
+                }
+            },
+            methods: {
+                openEditor() {
+
+                    if (!this.editor) {
+                        configureCKEditor('#editor', this, this.ckName || {});
+                        configureCKEditor('#editorMain', this, this.detailsCkName || {});
+                    }
+                },
+                destroyEditor() {
+                    if (this.editor) {
+                        this.editor.destroy();
+                        this.editor = null;
+                    }
+                },
+                initializeEditor() {
+                    this.destroyEditor();
+                    if (this.ckName == "" || this.detailsCkName == "") {
+                        configureCKEditor('#editor', this, this.ckMain || {});
+                        configureCKEditor('#editorMain', this, this.detailsCkName || {});
+
+                    }
+                },
+
+                async addItems() {
+                    try {
+                        $('#loadingMore').fadeIn();
+
+                        const formData = new FormData();
+
+                        formData.append('ContactPerson', this.ContactPerson);
+                        formData.append('Address', this.Address);
+                        formData.append('Mobile', this.Mobile);
+                        formData.append('Telephone', this.Telephone);
+                        formData.append('Experience', this.detailsCkName);
+                        formData.append('Email', this.Email);
+                        formData.append('Description', this.ckMain);
+                        formData.append('City', this.City);
+                        formData.append('PackageId', this.PackageId);
+                        formData.append('PasswordHash', this.Password);
+                        formData.append('ConfirmPassword', this.ConfirmPass);
+
+                        await axios.post('/drivers/update', formData,
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            }).then((response)=>{
+                                if (response.data.code == 200){
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Thành công',
+                                        text: 'Đã lưu thành công',
+                                        confirmButtonText: 'OK'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.reload();
+
+                                        }
+                                    });
+                                }else{
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Lỗi',
+                                        text: `${response.data.message}`,
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+
+                            }).finally(() => {
+                                $('#loadingMore').fadeOut();
+                            });
+                       
+                    } catch (error) {
+                        $('#loadingMore').fadeIn();
+
+                        console.error(error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: 'Đã có lỗi xảy ra',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+            }
+        });
+    </script>
+
+}
+

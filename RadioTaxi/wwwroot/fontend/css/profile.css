@@ -1,0 +1,912 @@
+﻿
+
+
+
+
+
+
+
+.breadcrumb_sec .row:last-child {
+    background-color: #fff;
+}
+
+.breadcrumb_sec .breadcrumb li.active span {
+    color: #4E4B66;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+/* ---------------------------------------------------  checkbox checked -------------------------------------*/
+
+.one_group input[type="radio"] {
+    width: 24px;
+    height: 24px;
+    opacity: 0;
+    margin-right: 8px;
+    position: relative;
+}
+
+input[type="radio"] + label span {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    vertical-align: middle;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    left: 0px;
+    top: 16px;
+    border: 1px solid #D9DBE9;
+}
+
+.one_group div.radio {
+    height: 60px;
+    margin-right: 45px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+input[type="radio"] + label span::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 10px;
+    top: 2px;
+    left: 2px;
+}
+
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 14px;
+    width: 14px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #A0A3BD;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    position: relative;
+}
+
+    .option-input:checked {
+        background: #0395EE;
+        border: 1px solid #0395EE;
+    }
+
+        .option-input:checked::before {
+            height: 14px;
+            width: 14px;
+            position: absolute;
+            content: '✔';
+            display: inline-block;
+            font-size: 8px;
+            text-align: center;
+            line-height: 14px;
+        }
+
+label.check_notification {
+    color: #6E7191 !important;
+    font-size: 14px !important;
+}
+
+input[type="radio"]:checked {
+    border: 1px solid #D9DBE9 !important;
+}
+
+    input[type="radio"]:checked + label span {
+        background: #fff;
+    }
+
+        input[type="radio"]:checked + label span::after {
+            background: #0395EE;
+        }
+
+.one_group .relationship input[type="radio"] {
+    display: none;
+}
+
+.one_group .relationship label {
+    font-size: 16px;
+    font-weight: 500 !important;
+    color: #4E4B66 !important;
+    background-color: #fff;
+    border: 1px solid #D9DBE9;
+    border-radius: 12px;
+    padding: 9px 30px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.one_group .relationship input[type="radio"]:checked + label {
+    background-color: #FF6609;
+    color: #fff !important;
+}
+
+input[type="checkbox"] {
+    outline: none !important;
+}
+
+
+/* --------------------------------------------------- end checkbox checked -------------------------------------*/
+/* ---------------------------------------------------thông tin cá nhân trái -------------------------------------*/
+.profile-page .panel {
+    border-radius: 16px;
+    border: 0;
+}
+
+.profile-page .left-panel .user-meta {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 24px;
+}
+
+.profile-page .left-panel .left-navbar {
+    margin-top: 86px;
+}
+
+.profile-page .left-navbar ul {
+    padding: 12px;
+}
+
+    .profile-page .left-navbar ul > li > a {
+        background-color: #fff;
+        border: 1.5px solid #fff;
+        border-top: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: flex;
+        align-items: center;
+        color: #4E4B66;
+    }
+
+        .profile-page .left-navbar ul > li > a > svg {
+            margin-right: 10px;
+        }
+
+        .profile-page .left-navbar ul > li.active > a,
+        .profile-page .left-navbar ul > li > a:hover {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FF6609;
+            border: 1.5px solid #FF6609;
+            border-radius: 10px;
+        }
+
+        .profile-page .left-navbar ul > li > a > svg.icon-orange {
+            display: none;
+        }
+
+        .profile-page .left-navbar ul > li.active > a > svg.icon-gray,
+        .profile-page .left-navbar ul > li > a:hover > svg.icon-gray {
+            display: none;
+        }
+
+        .profile-page .left-navbar ul > li.active > a > svg.icon-orange,
+        .profile-page .left-navbar ul > li > a:hover > svg.icon-orange {
+            display: block;
+        }
+
+        .profile-page .left-navbar ul > li > a:hover {
+            border: 1.5px solid #fff;
+        }
+
+    .profile-page .left-navbar ul > li.active > a::before,
+    .profile-page .left-navbar ul > li.active > a::after {
+        display: none;
+    }
+
+.profile-page .user-meta .user-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: #242424;
+    margin-top: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-page .user-meta:hover .file svg {
+    display: inline-block;
+    opacity: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 74px;
+}
+
+.profile-page .primary-tabs > li > a {
+    font-size: 20px;
+    font-weight: 500;
+    color: #6E7191;
+    border: 0;
+}
+
+.profile-page .primary-tabs > li.active > a {
+    font-size: 20px;
+    font-weight: 700;
+    border: 0;
+    color: #FF6609;
+}
+
+.profile-page .primary-tabs > li > a::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: 36px;
+    background: #D9DBE9;
+    right: 0;
+    top: 12px;
+}
+
+.profile-page .primary-tabs > li:last-child > a::after {
+    display: none;
+}
+
+.profile-page .primary-tabs > li.active > a:hover {
+    border: 0;
+    font-weight: 700;
+}
+
+.profile-page .primary-tabs > li > a {
+    background-color: #fff;
+}
+/* ---------------------------------------------------end thông tin cá nhân trái -------------------------------------*/
+/* ---------------------------------------------------thông tin cá nhân -------------------------------------*/
+
+section.information_user {
+    margin-top: 64px;
+}
+
+    section.information_user .container .row .side_left {
+        padding: 0;
+    }
+
+        section.information_user .container .row .side_left div.panel {
+            background-color: #fff;
+            padding: 24px 33px;
+            border-radius: 16px;
+        }
+
+            section.information_user .container .row .side_left div.panel img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                display: block;
+                margin: 0 auto;
+            }
+
+            section.information_user .container .row .side_left div.panel span.name_user {
+                font-size: 16px;
+                text-transform: uppercase;
+                color: #242424;
+                font-weight: 500;
+                margin-top: 16px;
+                margin-bottom: 37px;
+                display: block;
+                text-align: center;
+            }
+
+.side_left div.panel div.items div {
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #4E4B66;
+    font-weight: 700;
+    padding: 17px;
+    background-color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.side_left div.panel div.items > div > span {
+    margin-left: 10px;
+}
+
+.side_left div.panel div.items div.active,
+.side_left div.panel div.items div:hover {
+    color: #fff;
+    fill: #fff;
+    background-color: #FF6609;
+}
+
+    .side_left div.panel div.items div.active > svg {
+        fill: #fff;
+    }
+
+.profile-page .primary-tabs > li:last-child a {
+    border: 0;
+}
+
+/*--------------------------------------- thông tin cá nhân-----------------------------------------------*/
+
+.tab-content .menu_head {
+    background-color: #fff;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    display: flex;
+}
+
+    .tab-content .menu_head div {
+        width: 33.3333%;
+        text-align: center;
+        padding: 26px;
+        color: #6E7191;
+        text-transform: uppercase;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+        .tab-content .menu_head div.active {
+            color: #FF6609;
+        }
+
+.tab-content .form_infor {
+    padding: 36px 100px;
+    background-color: #fff;
+    border-radius: 16px;
+}
+
+    .tab-content .form_infor h1,
+    .form_infor h2 {
+        color: #14142B;
+        text-transform: uppercase;
+        font-size: 28px;
+        font-weight: 700;
+        position: relative;
+        display: inline-block;
+        border-bottom: 0.5px solid #D9DBE9;
+        padding-bottom: 8px;
+        margin-top: 0;
+    }
+
+    .tab-content .form_infor form .one_group {
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+        .tab-content .form_infor form .one_group label {
+            color: #4E4B66;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .tab-content .form_infor form .one_group select {
+            background: #fff;
+        }
+
+            .tab-content .form_infor form .one_group input[type="text"],
+            .tab-content .form_infor form .one_group input[type="email"],
+            .tab-content .form_infor form .one_group input[type="number"],
+            .tab-content .form_infor form .one_group input[type="password"],
+            .tab-content .form_infor form .one_group textarea,
+            .tab-content .form_infor form .one_group select#citys,
+            .tab-content .form_infor form .one_group select#district,
+            .tab-content .form_infor form .one_group select#wards {
+                width: 100%;
+                border: 1px solid #D9DBE9;
+                border-radius: 12px;
+                font-size: 16px;
+                padding: 17px;
+                outline: none;
+                font-weight: 500;
+                color: #4E4B66;
+            }
+                /* Chrome, Safari, Edge, Opera */
+                .tab-content .form_infor form .one_group input[type="number"]::-webkit-outer-spin-button,
+                .tab-content .form_infor form .one_group input[type="number"]::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+        /* Firefox */
+        .tab-content .form_infor form .one_group input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .tab-content .form_infor form .one_group #pass_old.error,
+        .tab-content .form_infor form .one_group #pass_new.error,
+        .tab-content .form_infor form .one_group #retype.error {
+            border: 1px solid #FF3F3F;
+            background: rgba(255, 63, 63, 0.1);
+            margin-bottom: 28px;
+        }
+
+    .tab-content .form_infor form.page_change_pw .one_group span.er {
+        font-size: 14px;
+        font-weight: 500;
+        color: #FF3F3F;
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        left: 250px;
+    }
+
+    .tab-content .form_infor form .one_group .item {
+        width: 30%;
+    }
+
+    .tab-content .form_infor form .one_group div input.error {
+        border: 1px solid #FF3F3F;
+        background: rgba(255, 63, 63, 0.1);
+    }
+
+    .tab-content .form_infor form .one_group select {
+        appearance: none;
+        height: 60px;
+        width: 100%;
+        border: 1px solid #D9DBE9;
+        border-radius: 12px;
+        outline: none;
+        padding: 17px;
+        font-weight: 500;
+        color: #4E4B66;
+        font-size: 16px;
+    }
+
+span.arrow_down {
+    right: 20px;
+    top: 22px;
+}
+
+    span.arrow_down.day,
+    span.arrow_down.month,
+    span.arrow_down.year {
+        right: 6px;
+        top: 20px;
+    }
+
+.one_group button[type="button"] {
+    background: linear-gradient(#FF941A, #FF6006);
+    text-transform: uppercase;
+    color: #fff;
+    padding: 9px 39px;
+    border-radius: 23px;
+    font-weight: 700;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+}
+
+
+/*---------------------------------------end thông tin cá nhân-----------------------------------------------*/
+
+
+/* --------------------------------------------------- end thông tin cá nhân-------------------------------------*/
+
+
+/*---------------------------------------end đổi mật khẩu-----------------------------------------------*/
+.tab-content .form_infor .page_change_pw .one_group {
+    position: relative;
+}
+
+    .tab-content .form_infor .page_change_pw .one_group .icon_right {
+        position: absolute;
+        top: 16px;
+        right: 30px;
+        cursor: pointer;
+    }
+
+/* --------------------------------------------------- end đổi mật khẩu-------------------------------------*/
+/* ---------------------------------------------------  thông tin phụ huynh-------------------------------------*/
+.profile-page .list-parent .parent-item {
+    padding: 10px;
+    height: 66px;
+    border-radius: 12px;
+    border: 1.5px solid #6E7191;
+    background-color: #fff;
+}
+
+    .profile-page .list-parent .parent-item .parent-meta .parent-type {
+        font-size: 16px;
+        color: #6E7191;
+    }
+
+    .profile-page .list-parent .parent-item svg.icon-gray {
+        color: #6E7191;
+    }
+
+    .profile-page .list-parent .parent-item svg.icon-orange {
+        display: none;
+    }
+
+    .profile-page .list-parent .parent-item:hover {
+        border: 1.5px solid #FF6609;
+    }
+
+        .profile-page .list-parent .parent-item:hover > svg.icon-plus-gray {
+            display: none;
+        }
+
+        .profile-page .list-parent .parent-item:hover > svg.icon-plus-orange {
+            display: inline-block;
+        }
+
+    .profile-page .list-parent .parent-item .parent-name {
+        color: #6E7191;
+        font-weight: 700;
+    }
+
+    .profile-page .list-parent .parent-item:hover > .parent-meta > .parent-name {
+        color: #FF6609;
+        background: #fff;
+    }
+
+    .profile-page .list-parent .parent-item:hover svg.icon-gray {
+        display: none;
+    }
+
+    .profile-page .list-parent .parent-item:hover svg.icon-orange {
+        display: inline-block;
+    }
+
+.profile-page .list-parent div .parent-item:hover > h3 {
+    color: #FF6609;
+}
+
+.profile-page .list-parent .active .parent-item > h3 {
+    color: #FF6609;
+}
+
+.profile-page .list-parent .active .parent-item {
+    border: 1px solid #6E7191;
+}
+
+.profile-page .list-parent .btn-add-parent .text {
+    margin: 0;
+    color: #6E7191;
+    font-weight: 700;
+}
+
+.profile-page .list-parent div.col-md-3 {
+    margin-right: 16px;
+}
+
+.profile-page .list-parent div > .parent-item > svg.icon-plus-orange {
+    display: none;
+}
+
+.profile-page .list-parent div.active > .parent-item {
+    border: 1.5px solid #FF6609;
+}
+
+    .profile-page .list-parent div.active > .parent-item > svg.icon-plus-gray {
+        display: none;
+    }
+
+    .profile-page .list-parent div.active > .parent-item > svg.icon-plus-orange {
+        display: inline-block;
+    }
+
+.profile-page .list-parent div.active .parent-item svg.icon-gray {
+    display: none;
+}
+
+.profile-page .list-parent div.active .parent-item svg.icon-orange {
+    display: inline-block;
+}
+
+.profile-page .list-parent div > .parent-item:hover {
+    background: #fff;
+}
+
+.profile-page .list-parent div.active > .parent-item > .parent-meta > .parent-name {
+    color: #FF6609;
+}
+
+.profile-page .form-profile {
+    padding: 0;
+}
+
+    .profile-page .form-profile .control-label {
+        text-align: left;
+        text-transform: none;
+        font-weight: 700;
+        color: #14142B;
+    }
+
+    .profile-page .form-profile .input-icon .form-control {
+        width: 100%;
+        border: 1px solid #D9DBE9;
+        border-radius: 12px;
+        font-size: 16px;
+        padding: 17px;
+        outline: none;
+        height: auto;
+        background-color: #fff;
+        font-weight: 500;
+        color: #14142B;
+    }
+
+    .profile-page .form-profile .radio-group {
+        background: #F7F7FC;
+        border: 0;
+    }
+
+.profile-page .update,
+.profile-page .addNew {
+    background: linear-gradient(#FF941A, #FF6006);
+    text-transform: uppercase;
+    color: #fff;
+    padding: 9px 39px;
+    border-radius: 23px;
+    font-weight: 700;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    float: right;
+}
+
+.profile-page .form-profile .radio-group {
+    height: 48px;
+    padding: 5px;
+}
+
+    .profile-page .form-profile .radio-group > label {
+        margin: 0;
+    }
+
+        .profile-page .form-profile .radio-group > label span.radio {
+            padding: 0;
+        }
+
+        .profile-page .form-profile .radio-group > label span.text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: none;
+            font-size: 16px;
+        }
+
+        .profile-page .form-profile .radio-group > label input[type='radio']:checked + span.radio:after {
+            background-color: #0395EE;
+        }
+
+.form-horizontal .form-group {
+    position: relative;
+}
+
+.profile-page .form-profile .form-group span.er {
+    font-size: 14px;
+    font-weight: 500;
+    color: #FF3F3F;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    left: 250px;
+}
+.profile-page .panel {
+    background: #fff;
+    border: 1px solid #d1d1d1;
+    box-sizing: border-box;
+    box-shadow: 0 2px 33px rgba(176,192,237,.33);
+    border-radius: 12px;
+}
+.profile-page .user-meta .user-avatar {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+    .profile-page .user-meta .user-avatar img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+.profile-page .user-meta .file {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+    padding: 90px 0;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition-duration: .3s;
+    opacity: 0;
+}
+#userAvatarInput {
+    cursor: pointer;
+}
+.profile-page .user-meta .file input {
+    display: none;
+}
+.profile-page .user-meta .user-name {
+    font-size: 18px;
+    text-align: center;
+    margin: 10px -15px;
+}
+.profile-page .form-profile .input-icon .form-control.error {
+    border: 1px solid #FF3F3F;
+    background: rgba(255, 63, 63, 0.1);
+    margin-bottom: 28px;
+}
+.profile-page .left-panel .left-navbar {
+    margin-top: 86px;
+}
+.profile-page .left-navbar ul {
+    margin: 0;
+    padding: 0;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    overflow: hidden;
+}
+    .profile-page .left-navbar ul > li {
+        display: block;
+    }
+        .profile-page .left-navbar ul > li.active > a, .profile-page .left-navbar ul > li > a:hover {
+            font-size: 16px;
+            font-weight: 700;
+            color: #01d28e;
+            border: 1.5px solid #01d28e;
+            border-radius: 10px;
+        }
+        .profile-page .left-navbar ul > li.active > a {
+            background-color: #fff;
+            color: #01d28e;
+            border: solid #01d28e;
+            border-width: 1px 0;
+            margin-bottom: -1px;
+            z-index: 1;
+        }
+            .profile-page .left-navbar ul > li.active > a > svg.icon-gray, .profile-page .left-navbar ul > li > a:hover > svg.icon-gray {
+                display: none;
+            }
+        .profile-page .left-navbar ul > li > a > svg {
+            margin-right: 10px;
+        }
+        .profile-page .left-navbar ul > li > a {
+           
+            line-height: 50px;
+            border-top: 1px solid #d1d1d1;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: 16px;
+            color: #333;
+            background-color: #f8f9fd;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+.form_infor {
+    padding: 36px 100px;
+    background-color: #fff;
+    border-radius: 16px;
+}
+.profile-services {
+    padding: 36px 100px;
+}
+.input-form input {
+    width: 100%;
+    border: 1px solid #D9DBE9;
+    border-radius: 12px;
+    font-size: 16px;
+    padding: 17px;
+    outline: none;
+    font-weight: 500;
+    color: #4E4B66;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.profile-page .form-profile .input-icon input[type=number]::-webkit-outer-spin-button,
+.profile-page .form-profile .input-icon input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.profile-page .form-profile .input-icon input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* --------------------------------------------------- end thông tin phụ huynh-------------------------------------*/
+
+
+/* --------------------------------------------------- reponsive-------------------------------------*/
+
+@media screen and (max-width: 576px) {
+    .tab-content .menu_head {
+        flex-direction: column;
+    }
+
+    .tab-content .form_infor form .one_group {
+        flex-direction: column;
+    }
+
+    .tab-content .form_infor {
+        padding: 59px 0px;
+    }
+
+    .form_infor .form_infor-title {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tab-content .menu_head div {
+        width: 100%;
+    }
+
+    .one_group .relationship label {
+        padding: 9px 20px;
+        margin-right: 2px;
+    }
+
+    .tab-content .form_infor form .one_group .item span.arrow_down {
+        right: 0;
+    }
+
+    .tab-content .form_infor form.page_change_pw .one_group span.er {
+        left: 50px;
+    }
+
+    .tab-content .form_infor .page_change_pw .one_group .icon_right {
+        top: 45px;
+    }
+
+    .profile-page .primary-tabs > li > a::after {
+        display: none;
+    }
+
+    .profile-page .list-parent div.col-md-3 {
+        margin-right: 0;
+    }
+
+    .profile-page .form-profile .form-group span.er {
+        left: 50px;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+    .tab-content .form_infor form .one_group .item span.arrow_down {
+        right: 0;
+    }
+
+    .one_group .relationship label {
+        padding: 9px 24px;
+        margin-right: 2px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .tab-content .form_infor {
+        padding: 16px;
+    }
+
+    .profile-page .list-parent .btn-add-parent {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+}
+
+
+/* --------------------------------------------------- end reponsive-------------------------------------*/
+

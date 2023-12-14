@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioTaxi", "RadioTaxi\RadioTaxi.csproj", "{42166D76-3C1B-410B-84B0-7F829D79DDC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42166D76-3C1B-410B-84B0-7F829D79DDC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42166D76-3C1B-410B-84B0-7F829D79DDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42166D76-3C1B-410B-84B0-7F829D79DDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42166D76-3C1B-410B-84B0-7F829D79DDC3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91B5B58A-CEDC-485F-8962-63F9A9F735C2}
+	EndGlobalSection
+EndGlobal

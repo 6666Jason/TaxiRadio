@@ -1,0 +1,142 @@
+﻿
+.thumbnail {
+    padding: 5px 5px 15px 5px;
+    box-shadow: 0 2px 33px rgba(176,192,237,.33);
+    border: 1px solid #d1d1d1;
+    margin-bottom: 48px;
+}
+
+.thumbnail {
+    padding: 0;
+    border-radius: 12px;
+}
+
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+
+    .thumbnail .cover {
+        padding-top: 56.25%;
+        position: relative;
+    }
+
+    .thumbnail .cover {
+        border-radius: 12px;
+        overflow: hidden;
+        height: 200px;
+    }
+
+        .thumbnail .cover img {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+.cover img {
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+}
+
+.thumbnail > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.thumbnail .content {
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-top: 13px;
+}
+
+    .thumbnail .content p.old-price {
+        font-size: 22px;
+        text-align: right;
+        color: #828282;
+        margin-bottom: -12px;
+    }
+
+        .thumbnail .content p.old-price > span {
+            display: inline-block;
+            position: relative;
+            padding: 0 6px;
+        }
+
+        .thumbnail .content p.old-price span.line-through {
+            top: 49%;
+        }
+
+        .thumbnail .content p.old-price span.line-through {
+            width: 100%;
+            position: absolute;
+            border-bottom: 1px #828282 solid;
+            left: 0;
+            top: 15px;
+        }
+
+    .thumbnail .content p.new-price {
+        font-size: 15px;
+        font-weight: 700;
+        text-align: right;
+        color: #1b3043;
+        height: 60px;
+        margin-bottom: 7px;
+    }
+
+        .thumbnail .content p.new-price span.price {
+            font-size: 48px;
+            margin-left: 5px;
+            font-weight: 700;
+            text-align: right;
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+
+            .thumbnail .content p.new-price span.price span.currency {
+                position: relative;
+                top: -17px;
+                font-size: 20px;
+                margin-left: 2px;
+            }
+
+    .thumbnail .content p.remaining {
+        margin-bottom: 15px;
+        font-size: 15px;
+        color: #32668D;
+        font-weight: 700;
+        text-align: right;
+    }
+
+.thumbnail .detail {
+    padding-top: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.detail {
+    text-overflow: clip;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+    .detail p {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+

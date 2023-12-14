@@ -1,0 +1,213 @@
+﻿@model RadioTaxi.Models.ViewMainVM.ViewMainCRUD
+
+@{
+    ViewData["Title"] = "Drivers Page";
+}
+
+@section Styles{
+    <link href="~/fontend/css/search.css" rel="stylesheet" />
+}
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/fontend/img/carousel-bg-1.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Driver</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Driver</li>
+                </ol>
+            </nav>
+            <a href="/drivers/join" class="btn btn-primary btn-lg">Join with us</a>
+
+        </div>
+    </div>
+</div>
+
+@if (Model.ParticipantsList != null)
+{
+    <div class="container">
+        <div class="mb-5">
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 text-center heading-section ftco-animate">
+                    <span class="subheading">Driver</span>
+                    <h2 class="mb-3">Driver of Company</h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var items in Model.ParticipantsList)
+                {
+                    <div class="col-12 col-md-3 mb-4">
+                        <div class="card">
+                            <img class="card-img-top" src="@items.DriversMain.ApplicationUserMain.AvatartPath" alt="@items.DriversMain.ApplicationUserMain.FullName">
+                            <div class="card-body">
+                                <h5 class="card-title">Contact person: @items.DriversMain.ContactPerson</h5>
+                                <p class="card-text">City: @items.DriversMain.City</p>
+                                <p class="card-text">Address: @items.DriversMain.Address</p>
+                                <p class="card-text">Mobile: @items.DriversMain.Mobile</p>
+                                <a href="/driver/details/@items.ID" class="btn btn-primary">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}
+else if (Model.IsDriver == true)
+{
+    <div class="container">
+        <h2 class="text-center">You don't belong to any company yet</h2>
+        <a href="/company" class="btn btn-primary btn-lg">Join company now</a>
+
+    </div>
+}
+else if (Model.DriversList.Any() && Model.DriversList != null)
+{
+    <section class="ftco-section">
+        <div class="container">
+            <div class="mb-5">
+                <label class="row justify-content-center">Search Driver</label>
+                <div class="p-1 bg-light rounded rounded-pill shadow-sm ">
+                    <div class="input-group">
+                        <input id="search" type="search" placeholder="address,city..." aria-describedby="button-addon1" style="background: transparent !important" class="form-control border-0 bg-light">
+                        <div class="input-group-append">
+                            <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                        </div>
+
+                    </div>
+
+                </div>
+                <ul id="myMenu" class="mb-4">
+                </ul>
+            </div>
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-7 text-center heading-section ftco-animate">
+                    <span class="subheading">Driver</span>
+                    <h2 class="mb-3">All Driver</h2>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var items in Model.DriversList)
+                {
+                    <div class="col-12 col-md-3 mb-4">
+                        <div class="card">
+                            <img class="card-img-top" src="@items.ApplicationUserMain.AvatartPath" alt="@items.ApplicationUserMain.FullName">
+                            <div class="card-body">
+                                <h5 class="card-title">Contact person: @items.ContactPerson</h5>
+                                <p class="card-text">City: @items.City</p>
+                                <p class="card-text">Address: @items.Address</p>
+                                <p class="card-text">Mobile: @items.Mobile</p>
+                                <a href="/driver/details/@items.ID" class="btn btn-primary">View More</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+}
+
+
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="d-flex py-5 px-4">
+                    <i class="fa fa-certificate fa-3x text-primary flex-shrink-0"></i>
+                    <div class="ps-4">
+                        <h5 class="mb-3">Dịch Vụ website Quảng cáo hàng đầu Car</h5>
+                        <p>
+                            Chúng tôi luông mong muốn các quý khách hàng luôn dễ dàng, tiện lợi có thể tìm kiếm được
+                            những công ty uy tín
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="d-flex bg-light py-5 px-4">
+                    <i class="fa fa-users-cog fa-3x text-primary flex-shrink-0"></i>
+                    <div class="ps-4">
+                        <h5 class="mb-3">Chất lượng đội ngũ kiểm duyệt</h5>
+                        <p>
+                            Đội ngũ kiểm duyệt nghiêm ngặt giúp khách hàng có trải nghiệm tốt nhất khi đến với trang web
+                            của chúng tôi
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="d-flex py-5 px-4">
+                    <i class="fa fa-tools fa-3x text-primary flex-shrink-0"></i>
+                    <div class="ps-4">
+                        <h5 class="mb-3">Hệ thống Công Ty Taxi cao cấp</h5>
+                        <p>
+                            Đảm bảo Quý khách hàng không phải đắng đo về chất lượng dịch vụ của các công ty trên web của
+                            chúng tôi
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#myMenu").empty();
+
+            $("#search").on("input", function () {
+                var searchQuery = $(this).val();
+                if (searchQuery.length > 1) {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/search/driver",
+                        data: { search: searchQuery },
+                        dataType: "json",
+                        success: function (data) {
+                            displaySearchResults(data);
+                        },
+                        error: function () {
+                            console.log("Lỗi trong quá trình tìm kiếm.");
+                        }
+                    });
+                } else {
+                    $("#myMenu").empty();
+                }
+            });
+        });
+        function displaySearchResults(data) {
+            var recordCount = data.length;
+            $("#myMenu").empty();
+
+            for (var i = 0; i < data.length; i++) {
+                var resultItem = data[i];
+                var resultHtml = '<li>' +
+                    '<a href="/driver/details/' + resultItem.id + '">' +
+                    '<div class="row align-items-center">' +
+                    '<div class="col-12 d-flex flex-column">' +
+                    '<p> Name:  ' + resultItem.contactPerson + '</p>' +
+                    '<p>City: ' + resultItem.city + '</p>' +
+                    '<p>Address: ' + resultItem.address + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</li>' +
+                    '<hr/>';
+
+
+                $("#myMenu").append(resultHtml);
+            }
+
+        }
+    </script>
+}
+
+
+

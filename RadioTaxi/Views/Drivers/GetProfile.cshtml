@@ -1,0 +1,441 @@
+﻿@model RadioTaxi.Models.ProfileVM.ProfileCRUD
+
+@{
+    ViewData["Title"] = "Profile Drivers";
+    DateTime createDate = Model.DriversMain.CreateDate;
+    int dateSet = Model.DriversMain.PackageMain.Categories.DateSet;
+    int daysInMonth = 30;
+    int totalDays = dateSet * daysInMonth;
+    TimeSpan passedDays = DateTime.Now - createDate;
+    int remaining = totalDays - (int)passedDays.TotalDays;
+
+}
+@section Styles {
+    <link href="~/fontend/css/profile.css" rel="stylesheet" />
+
+}
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/fontend/img/carousel-bg-1.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Profile Drivers</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Profile Drivers</li>
+                </ol>
+            </nav>
+          
+
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section" id="profile_vue">
+    <div class="container profile-page">
+        <div class="row">
+            <div class="col-12 col-md-3 col-xl-3">
+                <div id="avatar_sec_vue" class="panel left-panel">
+                    <div class="user-meta">
+                        <form id="userAvatarInput">
+                            <div class="user-avatar">
+                                <img id="previewImage" alt="ảnh đại diện người dùng" src="@Model.DriversMain.ApplicationUserMain.AvatartPath">
+                                <div class="file">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.44 6.2364C17.48 6.30633 17.55 6.35627 17.64 6.35627C20.04 6.35627 22 8.3141 22 10.7114V16.6448C22 19.0422 20.04 21 17.64 21H6.36C3.95 21 2 19.0422 2 16.6448V10.7114C2 8.3141 3.95 6.35627 6.36 6.35627C6.44 6.35627 6.52 6.31632 6.55 6.2364L6.61 6.11654C6.64448 6.04397 6.67987 5.96943 6.71579 5.89376C6.97161 5.35492 7.25463 4.75879 7.43 4.40844C7.89 3.50943 8.67 3.00999 9.64 3H14.35C15.32 3.00999 16.11 3.50943 16.57 4.40844C16.7275 4.72308 16.9674 5.2299 17.1987 5.71839C17.2464 5.81921 17.2938 5.91924 17.34 6.01665L17.44 6.2364ZM16.71 10.0721C16.71 10.5716 17.11 10.9711 17.61 10.9711C18.11 10.9711 18.52 10.5716 18.52 10.0721C18.52 9.5727 18.11 9.16315 17.61 9.16315C17.11 9.16315 16.71 9.5727 16.71 10.0721ZM10.27 11.6204C10.74 11.1509 11.35 10.9012 12 10.9012C12.65 10.9012 13.26 11.1509 13.72 11.6104C14.18 12.0699 14.43 12.6792 14.43 13.3285C14.42 14.667 13.34 15.7558 12 15.7558C11.35 15.7558 10.74 15.5061 10.28 15.0466C9.82 14.5871 9.57 13.9778 9.57 13.3285V13.3185C9.56 12.6892 9.81 12.0799 10.27 11.6204ZM14.77 16.1054C14.06 16.8147 13.08 17.2542 12 17.2542C10.95 17.2542 9.97 16.8446 9.22 16.1054C8.48 15.3563 8.07 14.3774 8.07 13.3285C8.06 12.2897 8.47 11.3108 9.21 10.5616C9.96 9.81243 10.95 9.40289 12 9.40289C13.05 9.40289 14.04 9.81243 14.78 10.5516C15.52 11.3008 15.93 12.2897 15.93 13.3285C15.92 14.4173 15.48 15.3962 14.77 16.1054Z" fill="white"></path></svg>
+                                    <input id="userAvatar" type="file" name="file" accept="image/gif, image/jpeg, image/png" onchange="previewFile()">
+                                </div>
+                            </div>
+                        </form>
+                        <h3 class="user-name">@ViewBag.user</h3>
+                    </div>
+                    <div class="left-navbar">
+                        <ul>
+                            <li>
+                                <a href="/profile">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-gray"><mask id="mask0" maskUnits="userSpaceOnUse" x="4" y="14" width="16" height="8" style="mask-type: alpha;"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 14.4961H19.8399V21.8701H4V14.4961Z" fill="white"></path></mask> <g mask="url(#mask0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.921 15.9961C7.66 15.9961 5.5 16.7281 5.5 18.1731C5.5 19.6311 7.66 20.3701 11.921 20.3701C16.181 20.3701 18.34 19.6381 18.34 18.1931C18.34 16.7351 16.181 15.9961 11.921 15.9961ZM11.921 21.8701C9.962 21.8701 4 21.8701 4 18.1731C4 14.8771 8.521 14.4961 11.921 14.4961C13.88 14.4961 19.84 14.4961 19.84 18.1931C19.84 21.4891 15.32 21.8701 11.921 21.8701Z" fill="#4E4B66"></path></g> <mask id="mask1" maskUnits="userSpaceOnUse" x="6" y="2" width="12" height="11" style="mask-type: alpha;"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.60938 2H17.2294V12.6186H6.60938V2Z" fill="white"></path></mask> <g mask="url(#mask1)"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9204 3.42751C9.77941 3.42751 8.03741 5.16851 8.03741 7.30951C8.03041 9.44351 9.75941 11.1835 11.8914 11.1915L11.9204 11.9055V11.1915C14.0604 11.1915 15.8014 9.44951 15.8014 7.30951C15.8014 5.16851 14.0604 3.42751 11.9204 3.42751ZM11.9204 12.6185H11.8884C8.96641 12.6095 6.59941 10.2265 6.60941 7.30651C6.60941 4.38151 8.99141 1.99951 11.9204 1.99951C14.8484 1.99951 17.2294 4.38151 17.2294 7.30951C17.2294 10.2375 14.8484 12.6185 11.9204 12.6185Z" fill="#4E4B66"></path></g></svg>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-orange"><mask id="mask0" maskUnits="userSpaceOnUse" x="4" y="14" width="16" height="8" style="mask-type: alpha;"><path fill-rule="evenodd" clip-rule="evenodd" d="M4 14.4961H19.8399V21.8701H4V14.4961Z" fill="white"></path></mask> <g mask="url(#mask0)"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.921 15.9961C7.66 15.9961 5.5 16.7281 5.5 18.1731C5.5 19.6311 7.66 20.3701 11.921 20.3701C16.181 20.3701 18.34 19.6381 18.34 18.1931C18.34 16.7351 16.181 15.9961 11.921 15.9961ZM11.921 21.8701C9.962 21.8701 4 21.8701 4 18.1731C4 14.8771 8.521 14.4961 11.921 14.4961C13.88 14.4961 19.84 14.4961 19.84 18.1931C19.84 21.4891 15.32 21.8701 11.921 21.8701Z" fill="#FF6609"></path></g> <mask id="mask1" maskUnits="userSpaceOnUse" x="6" y="2" width="12" height="11" style="mask-type: alpha;"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.60938 2H17.2294V12.6186H6.60938V2Z" fill="white"></path></mask> <g mask="url(#mask1)"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9204 3.42751C9.77941 3.42751 8.03741 5.16851 8.03741 7.30951C8.03041 9.44351 9.75941 11.1835 11.8914 11.1915L11.9204 11.9055V11.1915C14.0604 11.1915 15.8014 9.44951 15.8014 7.30951C15.8014 5.16851 14.0604 3.42751 11.9204 3.42751ZM11.9204 12.6185H11.8884C8.96641 12.6095 6.59941 10.2265 6.60941 7.30651C6.60941 4.38151 8.99141 1.99951 11.9204 1.99951C14.8484 1.99951 17.2294 4.38151 17.2294 7.30951C17.2294 10.2375 14.8484 12.6185 11.9204 12.6185Z" fill="#FF6609"></path></g></svg>
+                                    Thông tin cá nhân
+                                </a>
+                            </li>
+                            <li @(ViewBag.active != null && ViewBag.active == "drivers" ? "class=active" : "")>
+                                <a href="/drivers/profile">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-gray"><path d="M22 16.7402V4.67019C22 3.47019 21.02 2.58019 19.83 2.68019H19.77C17.67 2.86019 14.48 3.93019 12.7 5.05019L12.53 5.16019C12.24 5.34019 11.76 5.34019 11.47 5.16019L11.22 5.01019C9.44 3.90019 6.26 2.84019 4.16 2.67019C2.97 2.57019 2 3.47019 2 4.66019V16.7402C2 17.7002 2.78 18.6002 3.74 18.7202L4.03 18.7602C6.2 19.0502 9.55 20.1502 11.47 21.2002L11.51 21.2202C11.78 21.3702 12.21 21.3702 12.47 21.2202C14.39 20.1602 17.75 19.0502 19.93 18.7602L20.26 18.7202C21.22 18.6002 22 17.7002 22 16.7402Z" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 5.49023V20.4902" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7.75 8.49023H5.5" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M8.5 11.4902H5.5" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-orange"><path d="M22 16.7402V4.67019C22 3.47019 21.02 2.58019 19.83 2.68019H19.77C17.67 2.86019 14.48 3.93019 12.7 5.05019L12.53 5.16019C12.24 5.34019 11.76 5.34019 11.47 5.16019L11.22 5.01019C9.44 3.90019 6.26 2.84019 4.16 2.67019C2.97 2.57019 2 3.47019 2 4.66019V16.7402C2 17.7002 2.78 18.6002 3.74 18.7202L4.03 18.7602C6.2 19.0502 9.55 20.1502 11.47 21.2002L11.51 21.2202C11.78 21.3702 12.21 21.3702 12.47 21.2202C14.39 20.1602 17.75 19.0502 19.93 18.7602L20.26 18.7202C21.22 18.6002 22 17.7002 22 16.7402Z" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 5.49023V20.4902" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7.75 8.49023H5.5" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M8.5 11.4902H5.5" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+
+                                    Dịch vụ của bạn
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/tai-khoan/hoc-tap">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-gray"><path d="M2 22H22" stroke="#4E4B66" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9.75 4V22H14.25V4C14.25 2.9 13.8 2 12.45 2H11.55C10.2 2 9.75 2.9 9.75 4Z" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 10V22H7V10C7 8.9 6.6 8 5.4 8H4.6C3.4 8 3 8.9 3 10Z" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 15V22H21V15C21 13.9 20.6 13 19.4 13H18.6C17.4 13 17 13.9 17 15Z" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-orange"><path d="M2 22H22" stroke="#FF6609" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9.75 4V22H14.25V4C14.25 2.9 13.8 2 12.45 2H11.55C10.2 2 9.75 2.9 9.75 4Z" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 10V22H7V10C7 8.9 6.6 8 5.4 8H4.6C3.4 8 3 8.9 3 10Z" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 15V22H21V15C21 13.9 20.6 13 19.4 13H18.6C17.4 13 17 13.9 17 15Z" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+
+                                    Người đăng ký
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-9 col-xl-9">
+                <div class="profile-page panel profile-services">
+                    <div class="form_infor ">
+                        <div class="d-flex justify-content-center mb-4">
+                            @if (remaining == 0)
+                            {
+                                <h3 class="text-danger">Driver Services - Pay to use</h3>
+                            }
+                            else
+                            {
+                                <h3>Driver Services - Remaining Days: @remaining days</h3>
+                            }
+                          
+                        </div>
+                    </div>
+                    @{
+                        int remainingAds = 0;
+                        if(Model.AdvertiseMain != null)
+                        {
+                            DateTime createDateAds = Model.AdvertiseMain.CreateDate;
+                            int dateSetAds = Model.DriversMain.PackageMain.Categories.DateSet;
+                            int totalDaysAds = dateSetAds * daysInMonth;
+                            TimeSpan passedDaysAds = DateTime.Now - createDateAds;
+                            remainingAds = totalDays - (int)passedDaysAds.TotalDays;
+                        }
+                       
+                    }
+                    @if(Model.CheckAds == false)
+                    {
+                        <p class="text-center">Ads Remaining Days: @remainingAds days </p>
+
+                    }
+
+                    @if (Model.ParticipantsMain != null)
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                Belongs to this company
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Company Name: @Model.ParticipantsMain.CompanyMain.CompanyName</h5>
+                                <p class="card-text">Contact Person: @Model.ParticipantsMain.CompanyMain.ContactPerson</p>
+                                <a href="/company/details/@Model.ParticipantsMain.CompanyMain.ID" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    }
+                  
+                    <form>
+                        
+                      
+                      
+                        <div class="row align-items-center mb-3">
+
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">ID Driver</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"  value="@Model.DriversMain.IDDriver" disabled>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">Contact Person</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"   v-model="ContactPerson">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">Address</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"  v-model="Address">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">Mobile</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"   v-model="Mobile">
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">Telephone</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"   v-model="Telephone">
+                            </div>
+                        </div>  
+                        <div class="row align-items-center mb-3">
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">City</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"   v-model="City">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">Email</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"   v-model="Email">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center mb-3">
+                            <div class="col-4 col-md-4">
+                                <label for="name" class="form-lable">Package</label>
+                            </div>
+                            <div class="col-8 col-md-8 input-form">
+                                <input type="text"  value="@Model.DriversMain.PackageMain.Name" disabled >
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-12 col-md-12">
+                                <label for="name" class="form-lable">Description</label>
+                            </div>
+                            <div class="col-12 col-md-12 input-form">
+                                <textarea id="editorMain" v-model="detailsCkName"> </textarea>
+
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-12 col-md-12">
+                                <label for="name" class="form-lable">Experience</label>
+                            </div>
+                            <div class="col-12 col-md-12 input-form">
+                                <textarea id="editor" v-model="ckMain"> </textarea>
+
+                            </div>
+                        </div>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-12 col-md-12">
+                                <a class="btn btn-success" href="javascript:void(0)" v-on:click="addItems">Update Profile</a>
+
+                            </div>
+
+
+                        </div>
+                       
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+@section Scripts {
+    <script src="~/lib/config/config_ckeditor.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#membership').change(function () {
+                var selectedPrice = parseFloat($(this).find('option:selected').data('price'));
+                $('#paymentPrice').val(selectedPrice.toFixed(2));
+            });
+            
+        });
+        $(document).ready(function () {
+            $('#userAvatarInput').click(function () {
+                $('#userAvatar').click();
+            });
+
+            $('#userAvatar').click(function (event) {
+                event.stopPropagation();
+            });
+        });
+
+        function previewFile() {
+            const fileInput = document.getElementById('userAvatar');
+            const preview = document.getElementById('previewImage');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+                sendFileToServer(file);
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                const defaultImagePath = '@Model.DriversMain.ApplicationUserMain.AvatartPath';
+                preview.src = defaultImagePath;
+            }
+        }
+
+        function sendFileToServer(file) {
+            $('#loadingMore').fadeIn();
+
+            const formData = new FormData();
+            formData.append('PrPath', file);
+
+            axios.post('/change/img', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+                .then((response) => {
+                    if (response.data.code == 200) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thành công',
+                            text: 'Đã lưu thành công',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.reload();
+
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: `${response.data.message}`,
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('File upload failed:', error);
+                }).finally(() => {
+                    $('#loadingMore').fadeOut();
+                });;
+        }
+        var profile_vue = new Vue({
+            el: "#profile_vue",
+            data: {
+                detailsCkName: "@Html.Raw(Model.DriversMain.Description)",
+                editor: "",
+                editorMain: "",
+                ckName: "",
+                ckMain: "@Html.Raw(Model.DriversMain.Experience)",
+
+                ContactPerson: "@Html.Raw(Model.DriversMain.ContactPerson)",
+                Designation: "",
+                Address: "@Html.Raw(Model.DriversMain.Address)",
+                Mobile: "@Html.Raw(Model.DriversMain.Mobile)",
+                Telephone: "@Html.Raw(Model.DriversMain.Telephone)",
+                FaxNumber: "",
+                Description: "",
+                Email: "@Html.Raw(Model.DriversMain.Email)",
+                City: "@Html.Raw(Model.DriversMain.City)",
+                IDDriver: "",
+                ID: "@Html.Raw(Model.DriversMain.ID)",
+                PackageId: "",
+                isChecked: false
+            },
+            mounted() {
+                configureCKEditor('#editorMain', this, this.detailsCkName);
+                configureCKEditor('#editor', this, this.ckMain);
+
+            },
+            watch: {
+
+                detailsCkName(newVal, oldVal) {
+                    if (!this.editor && newVal !== oldVal) {
+                        this.openEditor();
+                    }
+                }
+            },
+            beforeDestroy() {
+                if (this.editor) {
+                    this.editor.destroy();
+                }
+            },
+            methods: {
+                openEditor() {
+
+                    if (!this.editor) {
+                        configureCKEditor('#editorMain', this, this.detailsCkName || {});
+                    }
+                },
+                destroyEditor() {
+                    if (this.editor) {
+                        this.editor.destroy();
+                        this.editor = null;
+                    }
+                },
+                initializeEditor() {
+                    this.destroyEditor();
+                    if (this.detailsCkName == "") {
+                        configureCKEditor('#editorMain', this, this.detailsCkName || {});
+
+                    }
+                },
+
+                async addItems() {
+                    try {
+                        $('#loadingMore').fadeIn();
+
+                        const formData = new FormData();
+
+                        formData.append('ContactPerson', this.ContactPerson);
+                        formData.append('Address', this.Address);
+                        formData.append('Mobile', this.Mobile);
+                        formData.append('Telephone', this.Telephone);
+                        formData.append('Experience', this.ckMain);
+                        formData.append('Email', this.Email);
+                        formData.append('Description', this.detailsCkName);
+                        formData.append('City', this.City);
+                        formData.append('ID', this.ID);
+                       
+
+                        await axios.post('/drivers/update', formData,
+                            {
+                                headers: {
+                                    'Content-Type': 'multipart/form-data'
+                                }
+                            }).then((response) => {
+                                if (response.data.code == 200) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Thành công',
+                                        text: 'Đã lưu thành công',
+                                        confirmButtonText: 'OK'
+                                    }).then((result) => {
+                                        if (result.isConfirmed) {
+                                            window.location.reload();
+
+                                        }
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Lỗi',
+                                        text: `${response.data.message}`,
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+
+                            }).finally(() => {
+                                $('#loadingMore').fadeOut();
+                            });
+
+                    } catch (error) {
+                        $('#loadingMore').fadeOut();
+
+                        console.error(error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: 'Đã có lỗi xảy ra',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                },
+            }
+        });
+    </script>
+}

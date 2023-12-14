@@ -1,0 +1,174 @@
+﻿@model RadioTaxi.Models.ViewMainVM.ViewMainCRUD
+
+@{
+    ViewData["Title"] = "Driver Details";
+}
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/fontend/img/carousel-bg-1.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Driver Details </h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Driver Details </li>
+                </ol>
+            </nav>
+
+
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section" id="rent_vue">
+    <div class="d-flex justify-content-center mb-5">
+        <div class=" text-center heading-section ftco-animate">
+            <span class="subheading">About Driver</span>
+            <h2 class="mb-3">@Model.DriversMain.ContactPerson</h2>
+        </div>
+    </div>
+    <div class="container company-details">
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-12 text-center">
+                <div class="">
+                    <img class="img-fluid" src="@Model.DriversMain.ApplicationUserMain.AvatartPath" />
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div>
+                <button v-on:click="addDrivers" class="btn btn-success">Rent Now</button>
+            </div>
+        </div>
+        <div class="row">
+            @if (Model.ParticipantsMain != null)
+            {
+                <div class="col-12 col-md-12 mt-4 mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Belongs to this company
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Company Name: @Model.ParticipantsMain.CompanyMain.CompanyName</h5>
+                            <p class="card-text">Contact Person: @Model.ParticipantsMain.CompanyMain.ContactPerson</p>
+                            <a href="/company/details/@Model.ParticipantsMain.CompanyMain.ID" class="btn btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-12 mb-4">
+                <h4 class="text-center">Driver details</h4>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Contact Person: <span>@Model.DriversMain.ContactPerson</span></p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Mobile: <span>@Model.DriversMain.Mobile</span></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Telephone:<span>@Model.DriversMain.Telephone</span> </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">City:<span>@Model.DriversMain.City</span> </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Address: <span>@Model.DriversMain.Address</span></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Joining date: <span>@Model.DriversMain.CreateDate.ToString("dd/MM/yyyy")</span></p>
+
+                </div>
+            </div>
+            <div class="col-12">
+                <p>Experience</p>
+                <div class="details">
+                    @Html.Raw(Model.DriversMain.Experience)
+                </div>
+            </div>
+            <div class="col-12">
+                <p>Description</p>
+                <div class="details">
+                    @Html.Raw(Model.DriversMain.Description)
+                </div>
+            </div>
+            <div class="col-12 mt-3 d-flex justify-content-center flex-column">
+                <h1 class="text-center">Contact Us</h1>
+                <p class="text-center">Email: @Model.DriversMain.Email</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts{
+    <script>
+        var rent_vue = new Vue({
+            el: "#rent_vue",
+            data: {
+                IDDriver: "@Html.Raw(Model.DriversMain.ID)",
+            },
+            methods: {
+                addDrivers() {
+                    try {
+                        $('#loadingMore').fadeIn();
+
+                        let formData = new FormData();
+                        formData.append("IDDriver", this.IDDriver);
+                        axios.post("/driver/rent", formData, {
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            }
+                        }).then(response => {
+                            if (response.data.code == 404) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Lỗi',
+                                    text: `${response.data.message}`,
+                                    confirmButtonText: 'OK'
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Thành công',
+                                    text: `${response.data.message}`,
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        }).finally(() => {
+                            $('#loadingMore').fadeOut();
+                        });
+                    }
+                    catch (error) {
+                        $('#loadingMore').fadeOut();
+
+                        console.error(error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: 'Đã có lỗi xảy ra',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+
+                },
+            }
+        });
+    </script>
+}

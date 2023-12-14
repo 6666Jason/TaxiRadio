@@ -1,0 +1,190 @@
+﻿@model RadioTaxi.Models.ViewMainVM.ViewMainCRUD
+
+@{
+    ViewData["Title"] = "Company Details";
+}
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/fontend/img/carousel-bg-1.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Company Details</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Company Details</li>
+                </ol>
+            </nav>
+
+
+        </div>
+    </div>
+</div>
+
+
+<section class="ftco-section">
+    <div class="d-flex justify-content-center mb-5">
+        <div class=" text-center heading-section ftco-animate">
+            <span class="subheading">About Company</span>
+            <h2 class="mb-3">@Model.CompanyMain.CompanyName</h2>
+        </div>
+    </div>
+    <div class="container company-details">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-12 text-center">
+                <div class="">
+                    <img class="img-fluid" src="@Model.CompanyMain.ApplicationUserMain.AvatartPath" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Contact Person: <span>@Model.CompanyMain.ContactPerson</span></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Designation: <span>@Model.CompanyMain.Designation</span></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Mobile: <span>@Model.CompanyMain.Mobile</span></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Telephone:<span>@Model.CompanyMain.Telephone</span> </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Fax Number:<span>@Model.CompanyMain.FaxNumber</span> </p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Address: <span>@Model.CompanyMain.Address</span></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div>
+                    <p class="text-center">Joining date: <span>@Model.CompanyMain.CreateDate.ToString("dd/MM/yyyy")</span></p>
+
+                </div>
+            </div>
+            <div class="col-12 mt-3 d-flex justify-content-center flex-column">
+                <h1 class="text-center">Contact Us</h1>
+                <p class="text-center">Email: @Model.CompanyMain.Email</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-intro" id="addDriver_vue">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section heading-section-white ">
+                <h2 class="mb-3">You Are Driver? So Don't Be Late.</h2>
+                <a href="javascript:void(0)" v-on:click="addDrivers" class="btn btn-primary btn-lg">Join with us</a>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+@if (Model.ParticipantsList != null)
+{
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-primary text-uppercase">// Our Driver //</h6>
+                <h1 class="mb-5">Our Driver</h1>
+            </div>
+            <div class="row g-4">
+                @foreach (var items in Model.ParticipantsList)
+                {
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="team-item">
+                            <div class="position-relative overflow-hidden">
+                                <img class="img-fluid" src="@items.DriversMain.ApplicationUserMain.AvatartPath" alt="@items.DriversMain.ContactPerson">
+                                <div class="team-overlay position-absolute start-0 top-0 w-100 h-100">
+                                        <a href="/driver/details/@items.DriversMain.ID" class="btn btn-square mx-1" href="">
+                                        <p>View More</p>
+                                    </a>
+                                   
+                                </div>
+                            </div>
+                            <div class="bg-light text-center p-4">
+                                <h5 class="fw-bold mb-0">Full Name: @items.DriversMain.ContactPerson</h5>
+                                <small>City: @items.DriversMain.City</small><br>
+                                <small>Joining date: @items.CreateDate.ToString("dd/MM/yyyy")</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+               
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts{
+    <script>
+        var addDriver_vue = new Vue({
+            el: "#addDriver_vue",
+            data: {
+                IDCompany: "@Html.Raw(Model.CompanyMain.ID)",
+            },
+            methods: {
+                addDrivers() {
+                    try {
+                        $('#loadingMore').fadeIn();
+
+                        let formData = new FormData();
+                        formData.append("IDCompany", this.IDCompany);
+                        axios.post("/company/driveradd", formData, {
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            }
+                        }).then(response => {
+                            if (response.data.code == 404) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Lỗi',
+                                    text: `${response.data.message}`,
+                                    confirmButtonText: 'OK'
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Thành công',
+                                    text: `${response.data.message}`,
+                                    confirmButtonText: 'OK',
+                                });
+                            }
+                        }).finally(() => {
+                            $('#loadingMore').fadeOut();
+                        });
+                    }
+                    catch (error) {
+                        $('#loadingMore').fadeOut();
+
+                        console.error(error);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi',
+                            text: 'Đã có lỗi xảy ra',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+
+                },
+            }
+        });
+    </script>
+}

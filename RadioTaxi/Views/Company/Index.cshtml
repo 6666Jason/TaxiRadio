@@ -1,0 +1,124 @@
+﻿@model RadioTaxi.Models.ViewMainVM.ViewMainCRUD
+
+@{
+    ViewData["Title"] = "Company Services";
+}
+@section Styles{
+    <link href="~/fontend/css/search.css" rel="stylesheet" />
+}
+<div class="container-fluid page-header mb-5 p-0" style="background-image: url(/fontend/img/carousel-bg-1.jpg);">
+    <div class="container-fluid page-header-inner py-5">
+        <div class="container text-center">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">Company Services</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center text-uppercase">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">Company Services</li>
+                </ol>
+            </nav>
+            <a href="/company/join" class="btn btn-primary btn-lg">Join with us</a>
+
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="mb-5">
+            <label class="row justify-content-center">Search company</label>
+            <div class="p-1 bg-light rounded rounded-pill shadow-sm ">
+                <div class="input-group">
+                    <input id="search" type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" style="background: transparent !important" class="form-control border-0 bg-light">
+                    <div class="input-group-append">
+                        <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <ul id="myMenu" class="mb-4">
+            </ul>
+        </div>
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span class="subheading">Company</span>
+                <h2 class="mb-3">All Companies</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var items in Model.CompanyList)
+            {
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="@items.ApplicationUserMain.AvatartPath" alt="@items.ApplicationUserMain.FullName">
+                        <div class="card-body">
+                            <h5 class="card-title">Company Name : @items.CompanyName</h5>
+                            <p class="card-text">Email: @items.Email</p>
+                            <p class="card-text">Telephone: @items.Telephone</p>
+                            <a href="/company/details/@items.ID" class="btn btn-primary">View More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#myMenu").empty();
+
+            $("#search").on("input", function () {
+                var searchQuery = $(this).val();
+                if (searchQuery.length > 1) {
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/search/company",
+                        data: { search: searchQuery },
+                        dataType: "json",
+                        success: function (data) {
+                            displaySearchResults(data);
+                        },
+                        error: function () {
+                            console.log("Lỗi trong quá trình tìm kiếm.");
+                        }
+                    });
+                } else {
+
+                    $("#myMenu").empty();
+                }
+            });
+        });
+        function displaySearchResults(data) {
+            var recordCount = data.length;
+            $("#myMenu").empty();
+
+            for (var i = 0; i < data.length; i++) {
+                var resultItem = data[i];
+                var resultHtml = '<li>' +
+                    '<a href="/company/details/' + resultItem.id + '">' +
+                    '<div class="row align-items-center">' +
+                    '<div class="col-12 d-flex flex-column">' +
+                    '<p> Name:  ' + resultItem.companyName + '</p>' +
+                    '<p>Designation: ' + resultItem.designation + '</p>' +
+                    '<p>Address: ' + resultItem.address + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '</a>' +
+                    '</li>' +
+                    '<hr/>';
+
+
+                $("#myMenu").append(resultHtml);
+            }
+
+        }
+    </script>
+}

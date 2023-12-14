@@ -1,0 +1,50 @@
+﻿@using RadioTaxi.Services
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> UserManager
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject RadioTaxi.Data.ApplicationDbContext _context
+
+
+@{
+    var companyLink = await NavigationHelper.GetCompanyLink(UserManager, HttpContextAccessor, _context);
+    var driverLink = await NavigationHelper.GetDriverLink(UserManager, HttpContextAccessor, _context);
+}
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-primary"><i class="fa fa-car me-3"></i>RadioCabs</h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a href="/" class="nav-item nav-link">Home</a>
+            <a href="about.html" class="nav-item nav-link">About</a>
+            @if (ViewBag.user != null)
+            {
+                <a href="/feedback" class="nav-item nav-link">Feedback</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">@ViewBag.user</a>
+                    <div class="dropdown-menu fade-up m-0">
+                        <a class="dropdown-item" href="/profile">Profile</a>
+                        <a class="dropdown-item" href="/dang-xuat">Logout</a>
+                    </div>
+                </div>
+
+
+            }
+            else
+            {
+                <a href="javascript:void(0)" id="loginFb" class="nav-item nav-link">Feedback</a>
+
+                <a id="btnLogin" href="javascript:void(0)" class="nav-item nav-link">Login / Register</a>
+
+            }
+            <a href="/advertise" class="nav-item nav-link">Advertising</a>
+
+            <a href="@companyLink" class="nav-item nav-link">Companny</a>
+            <a href="@driverLink" class="nav-item nav-link">Driver</a>
+
+        </div>
+
+    </div>
+</nav>

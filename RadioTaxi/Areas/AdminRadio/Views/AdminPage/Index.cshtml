@@ -1,0 +1,132 @@
+﻿<div id="Admin_Package">
+    <div class="p-3">
+        <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#Add" v-on:click="resetData">
+            Thêm mới
+        </button>
+
+    </div>
+    <table class="table table-bordered" id="package_table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên</th>
+                <th>Giá</th>
+                <th>Loại thanh toán</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in dataPackage" :key="index">
+                <td>{{index + 1}}</td>
+                <td>
+                    <a href="#" class="text text-success">{{item.name}}</a>
+                </td>
+                <td>
+                    {{formatCurrency(item.price)}}
+
+                </td>
+                <td>
+                    {{item.nameCategory}}
+
+                </td>
+
+                <td style="width: fit-content">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Sửa</button>
+                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Xóa</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="modal fade" id="Add" tabindex="-1" aria-labelledby="Add" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl ">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Thêm mới </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tên </label>
+                                <input class="form-control" type="text" placeholder="Tên" aria-label="default input example" v-model="Name">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Price</label>
+                                <input class="form-control" type="text" v-model="Price" placeholder="Price" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Thuộc danh mục</label>
+                                <select v-model="CategoryID" class="form-control">
+                                    <option v-for="tp in dataCategory" :key="tp.id" :value="tp.id">
+                                        {{ tp.name }}
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Đóng</button>
+                    <button type="button" class="btn btn-primary" v-on:click="add">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Edit" tabindex="-1" aria-labelledby="Edit" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl ">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sửa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tên danh mục </label>
+                                <input class="form-control" type="text" placeholder="Tên " aria-label="default input example" v-model="Name">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Price</label>
+                                <input class="form-control" type="text" v-model="Price" placeholder="Price" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Thuộc danh mục</label>
+                                <select v-model="CategoryID" class="form-control">
+                                    <option v-for="tp in dataCategory" :key="tp.id" :value="tp.id">
+                                        {{ tp.name }}
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" v-on:click="edit">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="~/lib/config/datatableconfig.js"></script>
+
+<script src="~/admin/js/adminjs/admin_package.js"></script>

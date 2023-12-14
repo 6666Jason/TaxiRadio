@@ -1,0 +1,62 @@
+﻿<div id="Renter_vue">
+    <table id="Renter_table" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Contact Person User</th>
+                <th>Contact Person Driver</th>
+                <th>Mobile User</th>
+                <th>Mobile Driver</th>
+                <th>Email User</th>
+                <th>Email Driver</th>
+                <th>Status</th>
+                <th>Date </th>
+                <th></th>
+            </tr>
+
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in dataDrivers" :key="index">
+                <td>{{index + 1}}</td>
+                <td>
+                    {{item.applicationUserMain.fullName}}
+                </td>
+                <td>
+                    {{item.driversMain.contactPerson}}
+                </td>
+                <td>
+                    {{item.applicationUserMain.phoneNumber}}
+                </td>
+                <td>
+                    {{item.driversMain.mobile}}
+                </td>
+
+                <td>
+                    {{item.applicationUserMain.email}}
+                </td>
+                <td>
+                    {{item.driversMain.email}}
+                </td>
+                <td>
+                    <div v-bind:class="{ 'btn btn-danger ': !item.status, 'btn btn-success': item.status}">
+                        <span>
+                            {{ item.status ?    'confirmed' : 'unconfimred' }}
+                        </span>
+
+                    </div>
+                </td>
+                <td>
+                    {{formatDate(new Date(item.createDate))}}
+                </td>
+                <td>
+
+                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+</div>
+<script src="~/lib/config/datatableconfig.js"></script>
+<script src="~/admin/js/adminjs/admin_renter.js"></script>

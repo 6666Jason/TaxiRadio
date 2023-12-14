@@ -1,0 +1,274 @@
+﻿<style>
+    .ck.ck-balloon-panel {
+        z-index: 2000;
+    }
+</style>
+<div id="company_vue">
+
+    <div class="p-3">
+        <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#Add" v-on:click="resetData">
+            Thêm mới
+        </button>
+
+    </div>
+    <div class="table-responsive">
+    <table class="table table-bordered" id="company_table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>ContactPerson</th>
+                <th>CompanyName</th>
+                <th>Designation</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Telephone</th>
+                <th>Fax Number</th>
+                <th>Email</th>
+                <th>MemberShipType</th>
+                <th>Loại package</th>
+                <th>Created Date</th>
+                <th>Status</th>
+                <th>Payment status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(item,index) in dataCompany" :key="index">
+                <td>{{index + 1}}</td>
+               
+                <td>
+                    {{item.contactPerson}}
+
+                </td> 
+                <td>
+                    {{item.companyName}}
+
+                </td>
+                <td>
+                    {{item.designation}}
+
+                </td>
+                <td>
+                    {{item.address}}
+
+                </td>
+                <td>
+                    {{item.mobile}}
+
+                </td>
+                <td>
+                    {{item.telephone}}
+
+                </td>
+                <td>
+                    {{item.faxNumber}}
+
+                </td>
+                <td>
+                    {{item.email}}
+
+                </td>
+                <td>
+                    {{item.memberShipType}}
+
+                </td>
+
+                <td>
+                    {{item.packageMain.name}}
+
+                </td>
+                <td>
+                    {{formatDate(new Date(item.createDate))}}
+
+                </td>
+                <td>
+                    <div v-on:click="handleTransaction(item)" v-bind:class="{ 'btn btn-danger ': !item.status, 'btn btn-success': item.status}">
+                        <span>
+                            {{ item.status ?    'Push top' : 'None' }}
+                        </span>
+
+                    </div>
+                </td>
+                <td>
+                    <div v-on:click="handlePayment(item)" v-bind:class="{ 'btn btn-danger ': !item.payment, 'btn btn-success': item.payment}">
+                        <span>
+                            {{ item.payment ?    'success' : 'false' }}
+                        </span>
+
+                    </div>
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Sửa</button>
+                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Xóa</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+
+    <div class="modal fade" id="Add" data-bs-focus="false" aria-labelledby="Add" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl ">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Add">Thêm mới </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">idCompany </label>
+                                <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idCompany">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">ContactPerson </label>
+                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson">
+                            </div> 
+                            <div class="mb-3">
+                                <label class="form-label">CompanyName </label>
+                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="companyName">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">designation </label>
+                                <input class="form-control" type="text" placeholder="designation" aria-label="default input example" v-model="designation">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">address </label>
+                                <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">mobile </label>
+                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">telephone </label>
+                                <input class="form-control" type="text" placeholder="telephone" aria-label="default input example" v-model="telephone">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">faxNumber </label>
+                                <input class="form-control" type="text" placeholder="faxNumber" aria-label="default input example" v-model="faxNumber">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">email </label>
+                                <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">MemberShipType </label>
+                                <input class="form-control" type="text" placeholder="MemberShipType" aria-label="default input example" v-model="memberShipType">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Thuộc package</label>
+                                <select v-model="packageMainID" class="form-control">
+                                    <option v-for="tp in dataPackage" :key="tp.id" :value="tp.id">
+                                        {{ tp.name }} - {{tp.nameCategory}}
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Đóng</button>
+                    <button type="button" class="btn btn-primary" v-on:click="addItems">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Edit" data-bs-focus="false" aria-labelledby="Edit" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-xl ">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sửa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">idCompany </label>
+                                <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idCompany">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">ContactPerson </label>
+                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">CompanyName </label>
+                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="companyName">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">designation </label>
+                                <input class="form-control" type="text" placeholder="designation" aria-label="default input example" v-model="designation">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">address </label>
+                                <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">mobile </label>
+                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">telephone </label>
+                                <input class="form-control" type="text" placeholder="telephone" aria-label="default input example" v-model="telephone">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">faxNumber </label>
+                                <input class="form-control" type="text" placeholder="faxNumber" aria-label="default input example" v-model="faxNumber">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">email </label>
+                                <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">MemberShipType </label>
+                                <input class="form-control" type="text" placeholder="MemberShipType" aria-label="default input example" v-model="memberShipType">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Thuộc package</label>
+                                <select v-model="packageMainID" class="form-control">
+                                    <option v-for="tp in dataPackage" :key="tp.id" :value="tp.id">
+                                        {{ tp.name }} - {{tp.nameCategory}}
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Đóng</button>
+                    <button type="button" class="btn btn-primary" v-on:click="editItems">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script>
+    $(document).ready(function () {
+
+        $('#Add').modal({
+            focus: false,
+            show: false
+        });
+    });
+
+</script>
+<script src="~/lib/config/config_ckeditor.js"></script>
+<script src="~/lib/config/datatableconfig.js"></script>
+<script src="~/admin/js/adminjs/admin_company.js"></script>

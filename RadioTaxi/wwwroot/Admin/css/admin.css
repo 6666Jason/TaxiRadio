@@ -1,0 +1,216 @@
+﻿#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0.4;
+    display: none;
+}
+
+    #preloader #preloader-inner {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #3498db;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+
+        #preloader #preloader-inner:before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #e74c3c;
+            -webkit-animation: spin 3s linear infinite;
+            animation: spin 3s linear infinite;
+        }
+
+        #preloader #preloader-inner:after {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #f9c922;
+            -webkit-animation: spin 1.5s linear infinite;
+            animation: spin 1.5s linear infinite;
+        }
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.box-bg {
+    background: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+    .box-bg .us-username {
+        color: #fb9119;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+        font-size: 15px;
+    }
+    .box-bg .us-img {
+        height: 110px;
+        width: 110px;
+        margin-bottom: 10px;
+    }
+    .box-bg .us-code {
+        color: #5d941f;
+        margin-bottom: 10px;
+    }
+        .box-bg .us-code span {
+            font-size: 22px;
+            font-weight: bold;
+        }
+.dashboard-stat.red {
+    background-color: #fff;
+}
+.dashboard-stat {
+    display: flex;
+    align-items: center;
+}
+    .dashboard-stat:after, .dashboard-stat:before {
+        content: " ";
+        display: table;
+    }
+    .dashboard-stat.dashboard-stat-v2 .visual {
+        padding-top: 0px;
+    }
+    .dashboard-stat .visual {
+       
+    }
+    .dashboard-stat .visual {
+       
+       
+        padding-left: 15px;
+        margin-bottom: 15px;
+        font-size: 35px;
+        line-height: 35px;
+    }
+    .dashboard-stat .details {
+        position: absolute;
+        right: 15px;
+        padding-right: 15px;
+    }
+.us-page .us-span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px !important;
+    padding: 2px 15px;
+    line-height: 35px;
+}
+.us-page .us-money {
+    background: gray;
+}
+.portlet.light.bordered {
+    border: none !important;
+}
+.portlet.light.portlet-fit {
+    padding: 0;
+}
+
+.portlet {
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding: 0;
+    border-radius: 4px;
+}
+    .portlet.light {
+        padding: 12px 20px 15px;
+        background-color: #fff;
+    }
+        .portlet.light.portlet-fit > .portlet-title {
+            padding: 15px 20px 10px;
+        }
+        .portlet.light.bordered > .portlet-title {
+            border-bottom: 1px solid #eef1f5;
+        }
+        .portlet.light > .portlet-title {
+            padding: 0;
+            min-height: 48px;
+        }
+    .portlet > .portlet-title {
+        border-bottom: 1px solid #eee;
+        padding: 0;
+        margin-bottom: 10px;
+        min-height: 41px;
+        -webkit-border-radius: 4px 4px 0 0;
+        -moz-border-radius: 4px 4px 0 0;
+        -ms-border-radius: 4px 4px 0 0;
+        -o-border-radius: 4px 4px 0 0;
+        border-radius: 4px 4px 0 0;
+    }
+        .portlet > .portlet-title > .caption {
+            float: left;
+            display: inline-block;
+            font-size: 18px;
+            line-height: 18px;
+            padding: 10px 0;
+        }
+.caption-subject {
+    margin: 5px 0;
+    color: #333;
+}
+.font-dark {
+    color: #2f353b !important;
+}
+.portlet > .portlet-title > .actions {
+    float: right;
+    display: inline-block;
+    padding: 6px 0;
+}
+.dashboard-stat.green {
+    background-color: #fff;
+}
+.f-12 {
+    font-size: 12px;
+}
+.ck.ck-balloon-panel {
+    z-index: 2000;
+}
