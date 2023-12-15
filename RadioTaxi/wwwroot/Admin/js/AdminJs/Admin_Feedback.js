@@ -145,7 +145,7 @@
         },
      
         getItemsByIdDelete(id) {
-            axios.get(`/AdminRadio/FeedBack/GetByID/${id}`)
+            axios.get(`/AdminRadio/AdminFeedback/GetByID/${id}`)
                 .then((response) => {
                     this.id = response.data.id;
                     if (this.id != null) {
@@ -160,7 +160,7 @@
                             if (result.isConfirmed) {
                                 const formData = new FormData();
                                 formData.append('ID', this.id);
-                                axios.post('/AdminRadio/FeedBack/Delete', formData, {
+                                axios.post('/AdminRadio/AdminFeedback/Delete', formData, {
                                     headers: {
                                         'Content-Type': 'application/x-www-form-urlencoded'
                                     }

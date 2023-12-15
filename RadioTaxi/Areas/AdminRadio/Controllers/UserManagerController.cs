@@ -59,6 +59,7 @@ namespace RadioTaxi.Areas.AdminRadio.Controllers
                            Email = us.Email,
                            PackageId = us.PackageId,
                            PhoneNumber = us.PhoneNumber,
+                           Address = us.Address,
                        };
             return View(data.ToList());
         }

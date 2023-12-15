@@ -42,7 +42,7 @@ namespace RadioTaxi.Data
             {
                 Email = superAdminEmail,
                 UserName = superAdminUserName,
-                AvatartPath = "/Upload/avatar/blank_avatar.png",
+                AvatartPath = "/upload/avatar/blank_avatar.png",
                 FullName = "superAdminUserName",
                 IsAcitive = true,
             };

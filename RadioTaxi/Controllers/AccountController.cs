@@ -128,27 +128,26 @@ namespace ShopBanVe.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM model)
         {
-            
-                var existingUser = await _userManager.FindByNameAsync(model.UserName);
+                ApplicationUser user = model;
+                user.UserName = model.Email;
+
+                var existingUser = await _userManager.FindByNameAsync(user.UserName);
                 if (existingUser != null)
                 {
                     // Username already exists
-                    ModelState.AddModelError("UserName", "The account already exists on the system");
                     return Json(new { code = 400, message = "The account already exists on the system" });
 
                 }
                 if(model.ConfirmPassword != model.PasswordHash)
                 {
-                return Json(new { code = 400, message = "Passwords are not the same" });
+                    return Json(new { code = 400, message = "Passwords are not the same" });
                 }
-                ApplicationUser user = model;
                 user.AvatartPath = "/Upload/avatar/blank_avatar.png";
                 user.IsAcitive = true;
                 user.PhoneNumber = model.PhoneNumber;
                 user.Email = model.Email;
                 user.CreateDate = DateTime.Now;
                 user.FullName = model.FullName;
-                 user.UserName = model.UserName;
                 var result = await _userManager.CreateAsync(user, model.PasswordHash);
 
                 if (result.Succeeded)
@@ -165,9 +164,9 @@ namespace ShopBanVe.Controllers
                 {
 
                     ModelState.AddModelError("", error.Description);
-                return Json(new { code = 400, message = "Mật khẩu phải có ít nhất 1 chữ hoa và ký tự đặc biệt" });
+                    return Json(new { code = 400, message = "Mật khẩu phải đủ 6 ký tự và không có ký tự đặc biệt" });
 
-            }
+                }
 
             return Json(new { code = 400, message = "Kiểm tra lại các trường" });
 

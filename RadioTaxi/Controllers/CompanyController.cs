@@ -289,6 +289,8 @@ namespace RadioTaxi.Controllers
                     user.Email = model.Email;
                     user.UserName = model.Email;
                     user.FullName = model.ContactPerson;
+                    user.Address = model.Address;
+
                     var result = await _userManager.CreateAsync(user, model.PasswordHash);
                     if (result.Succeeded)
                     {

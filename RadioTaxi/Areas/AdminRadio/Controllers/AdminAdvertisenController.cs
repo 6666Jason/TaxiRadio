@@ -135,13 +135,13 @@ namespace RadioTaxi.Areas.AdminRadio.Controllers
         {
             try
             {
-                var existingProduct = await _context.Company.FirstOrDefaultAsync(x => x.ID == model.ID);
+                var existingProduct = await _context.Advertise.FirstOrDefaultAsync(x => x.ID == model.ID);
                 if (existingProduct == null)
                 {
                     return NotFound();
 
                 }
-                _context.Company.Remove(existingProduct);
+                _context.Advertise.Remove(existingProduct);
                 await _context.SaveChangesAsync();
 
                 return Ok(existingProduct);
