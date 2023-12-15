@@ -1,17 +1,17 @@
 ﻿<div id="Admin_Package">
     <div class="p-3">
         <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#Add" v-on:click="resetData">
-            Thêm mới
+            Add New
         </button>
 
     </div>
     <table class="table table-bordered" id="package_table">
         <thead>
             <tr>
-                <th>STT</th>
-                <th>Tên</th>
-                <th>Giá</th>
-                <th>Loại thanh toán</th>
+                <th>No</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Payment Type</th>
                 <th></th>
             </tr>
         </thead>
@@ -31,8 +31,8 @@
                 </td>
 
                 <td style="width: fit-content">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Sửa</button>
-                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Xóa</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Edit</button>
+                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
 
                 </td>
             </tr>
@@ -49,7 +49,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
-                                <label class="form-label">Tên </label>
+                                <label class="form-label">Name </label>
                                 <input class="form-control" type="text" placeholder="Tên" aria-label="default input example" v-model="Name">
                             </div>
 
@@ -59,7 +59,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Thuộc danh mục</label>
+                                <label class="form-label">Category</label>
                                 <select v-model="CategoryID" class="form-control">
                                     <option v-for="tp in dataCategory" :key="tp.id" :value="tp.id">
                                         {{ tp.name }}
@@ -75,8 +75,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Đóng</button>
-                    <button type="button" class="btn btn-primary" v-on:click="add">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Close</button>
+                    <button type="button" class="btn btn-primary" v-on:click="add">Save</button>
                 </div>
             </div>
         </div>
@@ -85,14 +85,14 @@
         <div class="modal-dialog modal-xl ">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sửa</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
-                                <label class="form-label">Tên danh mục </label>
+                                <label class="form-label">Category Name </label>
                                 <input class="form-control" type="text" placeholder="Tên " aria-label="default input example" v-model="Name">
                             </div>
 
@@ -102,7 +102,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Thuộc danh mục</label>
+                                <label class="form-label">Category</label>
                                 <select v-model="CategoryID" class="form-control">
                                     <option v-for="tp in dataCategory" :key="tp.id" :value="tp.id">
                                         {{ tp.name }}
@@ -118,8 +118,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary" v-on:click="edit">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" v-on:click="edit">SAve</button>
                 </div>
             </div>
         </div>

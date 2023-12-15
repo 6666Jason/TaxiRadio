@@ -2,7 +2,7 @@
     <table id="feedback_table" class="table table-bordered">
         <thead>
            <tr>
-                <th>STT</th>
+                <th>No</th>
                 <th>Name</th>
                 <th>Mobile</th>
                 <th>Email</th>
@@ -33,7 +33,7 @@
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#View" v-on:click="getItemsById(item.id)">View</button>
 
-                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Xóa</button>
+                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -43,7 +43,7 @@
         <div class="modal-dialog modal-xl ">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="Add">Xem</h5>
+                    <h5 class="modal-title" id="Add">Feedback</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
                 </div>
                 <div class="modal-body">
@@ -81,7 +81,7 @@
                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Đóng</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Close</button>
                     
                 </div>
             </div>

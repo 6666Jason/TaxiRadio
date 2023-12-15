@@ -7,23 +7,23 @@
     <div>
         <div class="p-3">
             <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#Add" v-on:click="resetData">
-                Thêm mới
+                Add New
             </button>
 
         </div>
         <table class="table table-bordered" id="drivers_table">
             <thead>
                 <tr>
-                    <th>STT</th>
-                    <th>IDDriver</th>
-                    <th>ContactPerson</th>
+                    <th>No</th>
+                    @*<th>IDDriver</th>*@
+                    <th>Driver Name</th>
                     <th>Address</th>
                     <th>Mobile</th>
-                    <th>Telephone</th>
+                    @*<th>Telephone</th>*@
                     <th>Experience</th>
                     <th>Email</th>
-                    <th>Loại package</th>
-                    <th>Created Date</th>
+                    <th>Package Type</th>
+                    @*<th>Created Date</th>*@
                     <th>Status</th>
                     <th></th>
                 </tr>
@@ -31,9 +31,9 @@
             <tbody>
                 <tr v-for="(item,index) in dataDrivers" :key="index">
                     <td>{{index + 1}}</td>
-                    <td>
+                    @*<td>
                         <a href="#" class="text text-success">{{item.idDriver}}</a>
-                    </td>
+                    </td>*@
                     <td>
                         {{item.contactPerson}}
 
@@ -47,10 +47,10 @@
                         {{item.mobile}}
 
                     </td>
-                    <td>
+                    @*<td>
                         {{item.telephone}}
 
-                    </td>
+                    </td>*@
                     <td>
                         {{item.experience}}
 
@@ -64,10 +64,10 @@
                         {{item.packageMain.name}}
 
                     </td>
-                    <td>
+                    @*<td>
                         {{formatDate(new Date(item.createDate))}}
 
-                    </td>
+                    </td>*@
                     <td>
                         <div v-on:click="handleTransaction(item)" v-bind:class="{ 'btn btn-danger ': !item.status, 'btn btn-success': item.status}">
                             <span>
@@ -78,8 +78,8 @@
                     </td>
 
                     <td style="width: fit-content">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Sửa</button>
-                        <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Xóa</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Edit</button>
+                        <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
 
                     </td>
                 </tr>
@@ -91,31 +91,31 @@
         <div class="modal-dialog modal-xl ">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="Add">Thêm mới </h5>
+                    <h5 class="modal-title" id="Add">Add New </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-                            <div class="mb-3">
+                            @*<div class="mb-3">
                                 <label class="form-label">IDDriver </label>
                                 <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idDriver">
-                            </div>
+                            </div>*@
                             <div class="mb-3">
-                                <label class="form-label">ContactPerson </label>
+                                <label class="form-label">Driver Name </label>
                                 <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson">
                             </div>
                            
                             <div class="mb-3">
-                                <label class="form-label">address </label>
+                                <label class="form-label">Address </label>
                                 <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">mobile </label>
+                                <label class="form-label">Mobile </label>
                                 <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">telephone </label>
+                                <label class="form-label">Telephone </label>
                                 <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="telephone">
                             </div>
                             <div class="mb-3">
@@ -128,11 +128,11 @@
                             </div>
                             
                             <div class="mb-3">
-                                <label class="form-label">email </label>
+                                <label class="form-label">Email </label>
                                 <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Thuộc package</label>
+                                <label class="form-label">Package Type</label>
                                 <select v-model="packageMainID" class="form-control">
                                     <option v-for="tp in dataPackage" :key="tp.id" :value="tp.id">
                                         {{ tp.name }} - {{tp.nameCategory}}
@@ -148,7 +148,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
-                                <label class="form-label">description</label>
+                                <label class="form-label">Description</label>
                                 <textarea id="editorMain" v-model="ckName"> </textarea>
 
                             </div>
@@ -157,8 +157,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Đóng</button>
-                    <button type="button" class="btn btn-primary" v-on:click="addItems">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Close</button>
+                    <button type="button" class="btn btn-primary" v-on:click="addItems">Save</button>
                 </div>
             </div>
         </div>
@@ -167,31 +167,31 @@
         <div class="modal-dialog modal-xl ">
             <div class="modal-content ">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Sửa</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetData">X</button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-                            <div class="mb-3">
+                            @*<div class="mb-3">
                                 <label class="form-label">IDDriver </label>
                                 <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idDriver">
-                            </div>
+                            </div>*@
                             <div class="mb-3">
-                                <label class="form-label">ContactPerson </label>
+                                <label class="form-label">Driver Name </label>
                                 <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson">
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">address </label>
+                                <label class="form-label">Address </label>
                                 <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">mobile </label>
+                                <label class="form-label">Mobile </label>
                                 <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">telephone </label>
+                                <label class="form-label">Telephone </label>
                                 <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="telephone">
                             </div> 
                             <div class="mb-3">
@@ -204,12 +204,12 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">email </label>
+                                <label class="form-label">Email </label>
                                 <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email">
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Thuộc package</label>
+                                <label class="form-label">Package Type</label>
                                 <select v-model="packageMainID" class="form-control">
                                     <option v-for="tp in dataPackage" :key="tp.id" :value="tp.id">
                                         {{ tp.name }} - {{tp.nameCategory}}
@@ -225,7 +225,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="mb-3">
-                                <label class="form-label">description</label>
+                                <label class="form-label">Description</label>
                                 <textarea id="editor" v-model="ckName"> </textarea>
 
                             </div>
@@ -233,8 +233,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Đóng</button>
-                    <button type="button" class="btn btn-primary" v-on:click="editItems">Lưu</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Close</button>
+                    <button type="button" class="btn btn-primary" v-on:click="editItems">Save</button>
                 </div>
             </div>
         </div>

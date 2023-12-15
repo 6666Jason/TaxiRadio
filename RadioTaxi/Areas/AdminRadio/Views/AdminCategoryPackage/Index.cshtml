@@ -2,16 +2,20 @@
     <div >
         <div class="p-3">
             <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#Add" v-on:click="resetDataCategory">
-                Thêm mới danh mục
+                Add New Category
             </button>
 
         </div>
         <table class="table table-bordered" id="category_table">
             <thead>
                 <tr>
-                    <th>STT</th>
-                    <th>Tên danh mục</th>
-                    <th>Tháng thanh toán</th>
+                    <th>No</th>
+                    <th>
+                        Category Name
+                    </th>
+                    <th>
+                        Payment Month
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,8 +31,8 @@
                     </td>
 
                     <td style="width: fit-content">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Sửa</button>
-                        <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Xóa</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Edit</button>
+                        <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
 
                     </td>
                 </tr>
@@ -39,19 +43,19 @@
             <div class="modal-dialog modal-xl ">
                 <div class="modal-content ">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Thêm mới danh mục</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Tên danh mục </label>
-                                    <input class="form-control" type="text" placeholder="Tên danh mục" aria-label="default input example" v-model="nameCategory">
+                                    <label class="form-label">Category Name </label>
+                                    <input class="form-control" type="text" placeholder="Category Name" aria-label="default input example" v-model="nameCategory">
                                 </div>
                               
                                 <div class="mb-3">
-                                    <label class="form-label">Chọn số tháng </label>
+                                    <label class="form-label">Choose Month</label>
                                     <select v-model="monthChoose">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -75,8 +79,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                        <button type="button" class="btn btn-primary" v-on:click="addCategory">Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" v-on:click="addCategory">Save</button>
                     </div>
                 </div>
             </div>
@@ -85,18 +89,18 @@
             <div class="modal-dialog modal-xl ">
                 <div class="modal-content ">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sửa danh mục</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" v-on:click="resetDataCategory">X</button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Tên danh mục </label>
+                                    <label class="form-label">Category Name</label>
                                     <input class="form-control" type="text" placeholder="Tên danh mục" aria-label="default input example" v-model="nameCategory">
                                 </div>
                                 <div class="mb-3">
-                                    <label class="form-label">Chọn số tháng </label>
+                                    <label class="form-label">Choose Month</label>
                                     <select v-model="monthChoose">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -118,8 +122,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetDataCategory">Đóng</button>
-                        <button type="button" class="btn btn-primary" v-on:click="editCategory">Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetDataCategory">Close</button>
+                        <button type="button" class="btn btn-primary" v-on:click="editCategory">Save</button>
                     </div>
                 </div>
             </div>

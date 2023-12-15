@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Admin Shop</title>
+    <title>@ViewData["Title"] - Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -50,22 +50,22 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Products">
-                <div class="sidebar-brand-icon rotate-n-15">
+                @* <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Shop <sup>2</sup></div>
+                </div> *@
+                <div class="sidebar-brand-text mx-3">RaidoTaxi</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            @* <li class="nav-item active">
                 <a class="nav-link" href="/Admin/Course">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
-            </li>
+            </li> *@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -80,14 +80,18 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Quản lý người đăng ký</span>
+                    <span>
+                        Registrant Management
+                    </span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Quản lý:</h6>
-                        <a class="collapse-item" href="~/AdminRadio/AdminAdvertisen">Quản lý Advertisen</a>
-                        <a class="collapse-item" href="~/AdminRadio/AdminCompany">Quản lý Company</a>
-                        <a class="collapse-item" href="~/AdminRadio/AdminDrivers">Quản lý Drivers</a>
+                        <h6 class="collapse-header">Manage:</h6>
+                        <a class="collapse-item" href="~/AdminRadio/AdminAdvertisen">Advertisen Management</a>
+                        <a class="collapse-item" href="~/AdminRadio/AdminCompany">
+                            Company Management
+                        </a>
+                        <a class="collapse-item" href="~/AdminRadio/AdminDrivers">Driver Management</a>
                     </div>
                 </div>
             </li>
@@ -95,12 +99,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#danhmuc"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Quản lý danh mục</span>
+                    <span>
+                        Category Management
+                    </span>
                 </a>
                 <div id="danhmuc" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Danh mục:</h6>
-                        <a class="collapse-item" href="~/AdminRadio/AdminCategoryPackage">Danh mục package</a>
+                        <h6 class="collapse-header">Category:</h6>
+                        <a class="collapse-item" href="~/AdminRadio/AdminCategoryPackage">Category Package</a>
                         <a class="collapse-item" href="~/AdminRadio/AdminPage">Package</a>
                     </div>
                 </div>
@@ -110,15 +116,25 @@
                 <a class="nav-link collapsed" href="javascript:void(0)" data-toggle="collapse" data-target="#collapseUser"
                    aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Quản lý người dùng</span>
+                    <span>
+                        User Management
+                    </span>
                 </a>
                 <div id="collapseUser" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">User:</h6>
-                        <a class="collapse-item" href="/Admin/UserManager/Customer">Quản lý User</a>
-                        <a class="collapse-item" href="/AdminRadio/AdminFeedback">Quản lý Feedback</a>
-                        <a class="collapse-item" href="/AdminRadio/AdminParticipants">Quản lý company cho thuê</a>
-                        <a class="collapse-item" href="/AdminRadio/AdminRenter">Quản lý drivers cho thuê</a>
+                        <a class="collapse-item" href="/Admin/UserManager/Customer">
+                            User Management
+                        </a>
+                        <a class="collapse-item" href="/AdminRadio/AdminFeedback">
+                            Feedback Management
+                        </a>
+                        <a class="collapse-item" href="/AdminRadio/AdminParticipants">
+                            Rental Company Management
+                        </a>
+                        <a class="collapse-item" href="/AdminRadio/AdminRenter">
+                            Rental Driver Management
+                        </a>
 
                     </div>
                 </div>
@@ -132,12 +148,12 @@
 
             <!-- Nav Item - Charts -->
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            @*<hr class="sidebar-divider d-none d-md-block">*@
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
+            @*<div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+            </div>*@
 
             <!-- Sidebar Message -->
 
@@ -199,7 +215,7 @@
                         </li>
 
                         <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        @* <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" onclick="alertKOC()" id="alertsDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
@@ -208,10 +224,10 @@
                             </a>
                             <!-- Dropdown - Alerts -->
 
-                        </li>
+                        </li> *@
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        @* <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" onclick="alertKOC()" id="messagesDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
@@ -220,7 +236,7 @@
                             </a>
                             <!-- Dropdown - Messages -->
 
-                        </li>
+                        </li> *@
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -231,7 +247,7 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <img class="img-profile rounded-circle"
-                                     src="">
+                                     src="../wwwroot/Admin/img/Admin.png">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -303,7 +319,11 @@
     @await RenderSectionAsync("Scripts", required: false)
 
     <!-- Bootstrap core JavaScript-->
-
+    <style>
+        .sidebar {
+            width: 16rem !important;
+        }
+    </style>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>

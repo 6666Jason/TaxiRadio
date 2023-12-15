@@ -2,7 +2,7 @@
 
 <section class="sherah-adashboard sherah-show" id="UserVueMain">
     <div class="alert alert-danger">
-        Không được tắt trạng thái hoặc xóa của tài khoản admin
+        Do not disable or delete the Admin Account
     </div>
     <div class="row">
         <div class="col-12">
@@ -15,14 +15,14 @@
                             <!-- sherah Table Head -->
                             <thead class="sherah-table__head">
                                 <tr>
-                                    <th class="sherah-table__column-2 sherah-table__h2 text-nowrap">Tên</th>
-                                    <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Tài khoản</th>
+                                    <th class="sherah-table__column-2 sherah-table__h2 text-nowrap">Name</th>
+                                    <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Account</th>
                                     <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Email</th>
-                                    <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Số điện thoại</th>
-                                    <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Địa chỉ</th>
-                                    <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Ngày tham gia</th>
-                                    <th class="sherah-table__column-8 sherah-table__h7 text-nowrap">Trạng thái</th>
-                                    <th class="sherah-table__column-9 sherah-table__h8 text-nowrap">Xóa</th>
+                                    <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Number Phone</th>
+                                    <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Address</th>
+                                    @*<th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Ngày tham gia</th>*@
+                                    @*<th class="sherah-table__column-8 sherah-table__h7 text-nowrap">Status</th>*@
+                                    <th class="sherah-table__column-9 sherah-table__h8 text-nowrap">Delete</th>
                                 </tr>
                             </thead>
                             <tbody class="sherah-table__body">
@@ -60,11 +60,11 @@
                                                 </div>
                                             </td>
 
-                                            <td class="sherah-table__column-3 sherah-table__data-5">
+                                            @*<td class="sherah-table__column-3 sherah-table__data-5">
                                                 <div class="sherah-table__product-content">
                                                     <p class="sherah-table__product-desc">@item.CreateDate</p>
-                                                </div>
-                                            </td>
+                                                </div>*@
+                                            @*</td>
                                             @if (item.UserName == "supperadmin")
                                             {
                                                 <td class="sherah-table__column-7 sherah-table__data-6">
@@ -91,7 +91,7 @@
                                                         }
                                                     </div>
                                                 </td>
-                                            }
+                                            }*@
 
                                             <td class="sherah-table__column-8 sherah-table__data-7">
                                                 @if (item.UserName == "supperadmin")
