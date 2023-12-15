@@ -55,19 +55,16 @@ namespace ShopBanVe.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM model)
         {
+            // Tìm người dùng theo tên đăng nhập bằng cách không đồng bộ
             var user = await _userManager.FindByNameAsync(model.UserName);
-          
 
+            // Kiểm tra xem người dùng có tồn tại và không kích hoạt không
             if (user != null && !user.IsAcitive)
             {
+                // Thêm lỗi mô hình và đặt thông báo view bag cho tài khoản bị khóa
                 ModelState.AddModelError(string.Empty, "Tài khoản bị khoá");
                 ViewBag.Er = "Tài khoản bị khoá";
             }
-            //if (!_validate.HasRequestValidCaptchaEntry())
-            //{
-            //    return Json(new { code = 408, message = "Vui lòng nhập mã xác nhận hoặc kiểm tra lại mã xác nhận" });
-
-            //}
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
 
             if (result.Succeeded)
