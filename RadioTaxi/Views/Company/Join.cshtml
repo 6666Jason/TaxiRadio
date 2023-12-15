@@ -52,12 +52,12 @@
 						<input class="form-control" placeholder="Email" type="email" asp-for="Email"  required/>
 					</div>
 				</div>
-				@* <div class="col-12 col-md-4">
+				<div class="col-12 col-md-4">
 					<div class="mb-3">
 						<label class="form-label">Mobile</label>
 						<input class="form-control" placeholder="Mobile" type="text" asp-for="Mobile" required />
 					</div>
-				</div> *@
+				</div>
 				<div class="col-12 col-md-4">
 					<div class="mb-3">
 						<label class="form-label">Telephone</label>
@@ -189,7 +189,7 @@
 				
 				ContactPerson: "",
 				Address: "",
-				//Mobile: "",
+				Mobile: "",
 				Telephone: "",
 				Email: "",
 				City: "",
@@ -210,7 +210,7 @@
 
 						formData.append('ContactPerson', this.ContactPerson);
 						formData.append('Address', this.Address);
-						//formData.append('Mobile', this.Mobile);
+						formData.append('Mobile', this.Mobile);
 						formData.append('Telephone', this.Telephone);
 						formData.append('Designation', this.Designation);
 						formData.append('Email', this.Email);

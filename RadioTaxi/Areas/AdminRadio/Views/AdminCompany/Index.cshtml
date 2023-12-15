@@ -199,44 +199,44 @@
                             </div>*@
                             <div class="mb-3">
                                 <label class="form-label">ContactPerson </label>
-                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson">
+                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">CompanyName </label>
-                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="companyName">
+                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="companyName" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Designation </label>
-                                <input class="form-control" type="text" placeholder="designation" aria-label="default input example" v-model="designation">
+                                <input class="form-control" type="text" placeholder="designation" aria-label="default input example" v-model="designation" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Address </label>
-                                <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address">
+                                <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Mobile </label>
-                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile">
+                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Telephone </label>
-                                <input class="form-control" type="text" placeholder="telephone" aria-label="default input example" v-model="telephone">
+                                <input class="form-control" type="text" placeholder="telephone" aria-label="default input example" v-model="telephone" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">FaxNumber </label>
-                                <input class="form-control" type="text" placeholder="faxNumber" aria-label="default input example" v-model="faxNumber">
+                                <input class="form-control" type="text" placeholder="faxNumber" aria-label="default input example" v-model="faxNumber" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email </label>
-                                <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email">
+                                <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">MemberShipType </label>
-                                <input class="form-control" type="text" placeholder="MemberShipType" aria-label="default input example" v-model="memberShipType">
+                                <input class="form-control" type="text" placeholder="MemberShipType" aria-label="default input example" v-model="memberShipType" disabled>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Package Type</label>
-                                <select v-model="packageMainID" class="form-control">
+                                <select v-model="packageMainID" class="form-control" disabled>
                                     <option v-for="tp in dataPackage" :key="tp.id" :value="tp.id">
                                         {{ tp.name }} - {{tp.nameCategory}}
                                     </option>
@@ -251,7 +251,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Close</button>
-                    <button type="button" class="btn btn-primary" v-on:click="editItems">Save</button>
+                    @* <button type="button" class="btn btn-primary" v-on:click="editItems">Save</button> *@
                 </div>
             </div>
         </div>

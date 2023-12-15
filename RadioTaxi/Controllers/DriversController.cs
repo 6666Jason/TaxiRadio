@@ -303,6 +303,7 @@ namespace RadioTaxi.Controllers
 
                     if (model.Path != null)
                     {
+
                         var PrPath = await _iCommon.UploadedFile(model.Path);
                         user.AvatartPath = "/upload/" + PrPath;
                     }

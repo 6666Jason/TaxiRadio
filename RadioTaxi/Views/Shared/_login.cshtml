@@ -24,12 +24,13 @@
                                     <h3>Login</h3> <div class="text-right">
                                         <span>Do not have an account ?</span> <span class="to_register color_orange" id="buttonRes" style="cursor: pointer">Register now</span>
                                     </div>
+
                                 </div> <div class="group_input position-relative">
                                     <span class="position-absolute">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4E4B66" viewBox="0 0 16 16" class="bi bi-telephone">
                                             <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
                                         </svg>
-                                    </span> <input type="email" placeholder="Your email name" name="email" autofocus="autofocus" id="loginFormEmail" v-model="userName"> <span class="text_top position-absolute">Enter your email name</span>
+                                    </span> <input type="email" placeholder="Your email name" name="email" autofocus="autofocus" id="loginFormEmail" v-model="userName" required> <span class="text_top position-absolute">Enter your email name</span>
                                 </div> <div class="group_input position-relative">
                                     <span class="position-absolute">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +39,7 @@
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.3623 17.1751C11.9483 17.1751 11.6123 16.8391 11.6123 16.4251V14.2041C11.6123 13.7901 11.9483 13.4541 12.3623 13.4541C12.7763 13.4541 13.1123 13.7901 13.1123 14.2041V16.4251C13.1123 16.8391 12.7763 17.1751 12.3623 17.1751Z" fill="#4E4B66"></path>
                                         </svg>
                                     </span>
-                                    <input :type="mainType" placeholder="Password" name="password" id="loginFormPassword" v-model="password">
+                                    <input :type="mainType" placeholder="Password" name="password" id="loginFormPassword" v-model="password" required>
                                     <span class="text_top position-absolute">Enter password</span> <span class="position-absolute icon_right">
                                         <svg v-if="showMainPassword" v-on:click="togglePassword" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye ">
                                             <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path>
@@ -96,7 +97,7 @@
                                             <path d="M21.9435 18.4548C21.9111 17.9872 21.8456 17.477 21.7491 16.9383C21.6517 16.3956 21.5262 15.8826 21.3761 15.4136C21.2208 14.9289 21.0101 14.4503 20.7491 13.9916C20.4787 13.5156 20.1608 13.101 19.8041 12.7599C19.4312 12.403 18.9745 12.1161 18.4464 11.9068C17.9202 11.6986 17.337 11.5931 16.7131 11.5931C16.4681 11.5931 16.2312 11.6937 15.7736 11.9916C15.492 12.1752 15.1626 12.3876 14.7949 12.6226C14.4805 12.8229 14.0546 13.0106 13.5286 13.1805C13.0153 13.3466 12.4942 13.4308 11.9797 13.4308C11.4655 13.4308 10.9444 13.3466 10.4308 13.1805C9.90527 13.0107 9.47919 12.8231 9.16534 12.6227C8.80115 12.39 8.47156 12.1776 8.18573 11.9914C7.72852 11.6935 7.49158 11.593 7.24658 11.593C6.62256 11.593 6.03955 11.6986 5.51349 11.907C4.98578 12.1159 4.52893 12.4028 4.15558 12.7601C3.79889 13.1014 3.48102 13.5157 3.21075 13.9916C2.9502 14.4503 2.73926 14.9288 2.58398 15.4138C2.43402 15.8827 2.30859 16.3956 2.21118 16.9383C2.1145 17.4763 2.04913 17.9866 2.01672 18.4554C1.98486 18.9137 1.96875 19.3907 1.96875 19.8726C1.96875 21.1254 2.367 22.1396 3.15234 22.8876C3.92798 23.6257 4.9541 24 6.20233 24H17.7585C19.0063 24 20.0325 23.6257 20.8083 22.8876C21.5938 22.1402 21.9921 21.1256 21.9921 19.8724C21.9919 19.3888 21.9756 18.9119 21.9435 18.4548V18.4548ZM19.8386 21.8686C19.326 22.3564 18.6456 22.5935 17.7583 22.5935H6.20233C5.31482 22.5935 4.6344 22.3564 4.12207 21.8688C3.61945 21.3904 3.37518 20.7372 3.37518 19.8726C3.37518 19.4229 3.39001 18.9789 3.41968 18.5526C3.44861 18.1344 3.50775 17.675 3.59546 17.1868C3.68207 16.7047 3.7923 16.2522 3.9234 15.8426C4.04919 15.4499 4.22076 15.061 4.43353 14.6863C4.6366 14.3293 4.87024 14.0229 5.12805 13.7761C5.3692 13.5452 5.67316 13.3563 6.03131 13.2145C6.36255 13.0834 6.7348 13.0117 7.13892 13.0009C7.18817 13.027 7.27588 13.077 7.41797 13.1697C7.70709 13.3581 8.04034 13.5731 8.40875 13.8083C8.82404 14.0731 9.35907 14.3123 9.99829 14.5186C10.6518 14.7299 11.3183 14.8372 11.9799 14.8372C12.6414 14.8372 13.3081 14.7299 13.9612 14.5188C14.601 14.3121 15.1359 14.0731 15.5517 13.808C15.9287 13.567 16.2526 13.3583 16.5417 13.1697C16.6838 13.0772 16.7715 13.027 16.8208 13.0009C17.2251 13.0117 17.5974 13.0834 17.9288 13.2145C18.2867 13.3563 18.5907 13.5454 18.8318 13.7761C19.0897 14.0228 19.3233 14.3291 19.5264 14.6865C19.7393 15.061 19.9111 15.4501 20.0367 15.8425C20.168 16.2526 20.2784 16.7049 20.3648 17.1866C20.4523 17.6757 20.5117 18.1353 20.5406 18.5528V18.5531C20.5704 18.9778 20.5854 19.4216 20.5856 19.8726C20.5854 20.7374 20.3412 21.3904 19.8386 21.8686V21.8686Z" fill="#4E4B66"></path>
                                         </svg>
                                     </span>
-                                    <input type="text" placeholder="First and last name" name="name" class="" v-model="FullName">
+                                    <input type="text" placeholder="First and last name" name="name" class="" v-model="FullName" required>
                                     <span class="errors position-absolute">First and last name</span> <!---->
                                 </div>
                                 <div class="group_input position-relative">
@@ -107,28 +108,28 @@
                                             <path d="M21.9435 18.4548C21.9111 17.9872 21.8456 17.477 21.7491 16.9383C21.6517 16.3956 21.5262 15.8826 21.3761 15.4136C21.2208 14.9289 21.0101 14.4503 20.7491 13.9916C20.4787 13.5156 20.1608 13.101 19.8041 12.7599C19.4312 12.403 18.9745 12.1161 18.4464 11.9068C17.9202 11.6986 17.337 11.5931 16.7131 11.5931C16.4681 11.5931 16.2312 11.6937 15.7736 11.9916C15.492 12.1752 15.1626 12.3876 14.7949 12.6226C14.4805 12.8229 14.0546 13.0106 13.5286 13.1805C13.0153 13.3466 12.4942 13.4308 11.9797 13.4308C11.4655 13.4308 10.9444 13.3466 10.4308 13.1805C9.90527 13.0107 9.47919 12.8231 9.16534 12.6227C8.80115 12.39 8.47156 12.1776 8.18573 11.9914C7.72852 11.6935 7.49158 11.593 7.24658 11.593C6.62256 11.593 6.03955 11.6986 5.51349 11.907C4.98578 12.1159 4.52893 12.4028 4.15558 12.7601C3.79889 13.1014 3.48102 13.5157 3.21075 13.9916C2.9502 14.4503 2.73926 14.9288 2.58398 15.4138C2.43402 15.8827 2.30859 16.3956 2.21118 16.9383C2.1145 17.4763 2.04913 17.9866 2.01672 18.4554C1.98486 18.9137 1.96875 19.3907 1.96875 19.8726C1.96875 21.1254 2.367 22.1396 3.15234 22.8876C3.92798 23.6257 4.9541 24 6.20233 24H17.7585C19.0063 24 20.0325 23.6257 20.8083 22.8876C21.5938 22.1402 21.9921 21.1256 21.9921 19.8724C21.9919 19.3888 21.9756 18.9119 21.9435 18.4548V18.4548ZM19.8386 21.8686C19.326 22.3564 18.6456 22.5935 17.7583 22.5935H6.20233C5.31482 22.5935 4.6344 22.3564 4.12207 21.8688C3.61945 21.3904 3.37518 20.7372 3.37518 19.8726C3.37518 19.4229 3.39001 18.9789 3.41968 18.5526C3.44861 18.1344 3.50775 17.675 3.59546 17.1868C3.68207 16.7047 3.7923 16.2522 3.9234 15.8426C4.04919 15.4499 4.22076 15.061 4.43353 14.6863C4.6366 14.3293 4.87024 14.0229 5.12805 13.7761C5.3692 13.5452 5.67316 13.3563 6.03131 13.2145C6.36255 13.0834 6.7348 13.0117 7.13892 13.0009C7.18817 13.027 7.27588 13.077 7.41797 13.1697C7.70709 13.3581 8.04034 13.5731 8.40875 13.8083C8.82404 14.0731 9.35907 14.3123 9.99829 14.5186C10.6518 14.7299 11.3183 14.8372 11.9799 14.8372C12.6414 14.8372 13.3081 14.7299 13.9612 14.5188C14.601 14.3121 15.1359 14.0731 15.5517 13.808C15.9287 13.567 16.2526 13.3583 16.5417 13.1697C16.6838 13.0772 16.7715 13.027 16.8208 13.0009C17.2251 13.0117 17.5974 13.0834 17.9288 13.2145C18.2867 13.3563 18.5907 13.5454 18.8318 13.7761C19.0897 14.0228 19.3233 14.3291 19.5264 14.6865C19.7393 15.061 19.9111 15.4501 20.0367 15.8425C20.168 16.2526 20.2784 16.7049 20.3648 17.1866C20.4523 17.6757 20.5117 18.1353 20.5406 18.5528V18.5531C20.5704 18.9778 20.5854 19.4216 20.5856 19.8726C20.5854 20.7374 20.3412 21.3904 19.8386 21.8686V21.8686Z" fill="#4E4B66"></path>
                                         </svg>
                                     </span>
-                                    <input type="email" placeholder="Email" name="name" class="" v-model="Email">
+                                    <input type="email" placeholder="Email" name="name" class="" v-model="Email" required>
                                     <span class="errors position-absolute">Email</span> <!---->
                                 </div>
                                 <div class="group_input position-relative">
-                                     <span class="position-absolute">
+                                    <span class="position-absolute">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#4E4B66" viewBox="0 0 16 16" class="bi bi-telephone">
                                             <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"></path>
                                         </svg>
                                     </span>
-                                    <input type="text" placeholder="Phone number" class="" v-model="PhoneNumber">
+                                    <input type="text" placeholder="Phone number" class="" v-model="PhoneNumber" required>
                                     <span class="errors position-absolute">Phone number</span> <!---->
                                 </div>
-                              @*  <div class="group_input position-relative">
-                                    <span class="position-absolute">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.829 11.5609C13.4172 11.5609 14.7924 10.9913 15.9163 9.86735C17.0398 8.74364 17.6096 7.3687 17.6096 5.78026C17.6096 4.19238 17.04 2.81726 15.9161 1.69317C14.7922 0.56964 13.4171 0 11.829 0C10.2405 0 8.8656 0.56964 7.74188 1.69336C6.61816 2.81707 6.04834 4.19219 6.04834 5.78026C6.04834 7.3687 6.61816 8.74382 7.74188 9.86754C8.86597 10.9911 10.2411 11.5609 11.829 11.5609V11.5609ZM8.73651 2.6878C9.59875 1.82556 10.6102 1.40643 11.829 1.40643C13.0475 1.40643 14.0592 1.82556 14.9216 2.6878C15.7839 3.55023 16.2032 4.56188 16.2032 5.78026C16.2032 6.99901 15.7839 8.01048 14.9216 8.87291C14.0592 9.73533 13.0475 10.1545 11.829 10.1545C10.6106 10.1545 9.59912 9.73515 8.73651 8.87291C7.87408 8.01067 7.45477 6.99901 7.45477 5.78026C7.45477 4.56188 7.87408 3.55023 8.73651 2.6878Z" fill="#4E4B66"></path>
-                                            <path d="M21.9435 18.4548C21.9111 17.9872 21.8456 17.477 21.7491 16.9383C21.6517 16.3956 21.5262 15.8826 21.3761 15.4136C21.2208 14.9289 21.0101 14.4503 20.7491 13.9916C20.4787 13.5156 20.1608 13.101 19.8041 12.7599C19.4312 12.403 18.9745 12.1161 18.4464 11.9068C17.9202 11.6986 17.337 11.5931 16.7131 11.5931C16.4681 11.5931 16.2312 11.6937 15.7736 11.9916C15.492 12.1752 15.1626 12.3876 14.7949 12.6226C14.4805 12.8229 14.0546 13.0106 13.5286 13.1805C13.0153 13.3466 12.4942 13.4308 11.9797 13.4308C11.4655 13.4308 10.9444 13.3466 10.4308 13.1805C9.90527 13.0107 9.47919 12.8231 9.16534 12.6227C8.80115 12.39 8.47156 12.1776 8.18573 11.9914C7.72852 11.6935 7.49158 11.593 7.24658 11.593C6.62256 11.593 6.03955 11.6986 5.51349 11.907C4.98578 12.1159 4.52893 12.4028 4.15558 12.7601C3.79889 13.1014 3.48102 13.5157 3.21075 13.9916C2.9502 14.4503 2.73926 14.9288 2.58398 15.4138C2.43402 15.8827 2.30859 16.3956 2.21118 16.9383C2.1145 17.4763 2.04913 17.9866 2.01672 18.4554C1.98486 18.9137 1.96875 19.3907 1.96875 19.8726C1.96875 21.1254 2.367 22.1396 3.15234 22.8876C3.92798 23.6257 4.9541 24 6.20233 24H17.7585C19.0063 24 20.0325 23.6257 20.8083 22.8876C21.5938 22.1402 21.9921 21.1256 21.9921 19.8724C21.9919 19.3888 21.9756 18.9119 21.9435 18.4548V18.4548ZM19.8386 21.8686C19.326 22.3564 18.6456 22.5935 17.7583 22.5935H6.20233C5.31482 22.5935 4.6344 22.3564 4.12207 21.8688C3.61945 21.3904 3.37518 20.7372 3.37518 19.8726C3.37518 19.4229 3.39001 18.9789 3.41968 18.5526C3.44861 18.1344 3.50775 17.675 3.59546 17.1868C3.68207 16.7047 3.7923 16.2522 3.9234 15.8426C4.04919 15.4499 4.22076 15.061 4.43353 14.6863C4.6366 14.3293 4.87024 14.0229 5.12805 13.7761C5.3692 13.5452 5.67316 13.3563 6.03131 13.2145C6.36255 13.0834 6.7348 13.0117 7.13892 13.0009C7.18817 13.027 7.27588 13.077 7.41797 13.1697C7.70709 13.3581 8.04034 13.5731 8.40875 13.8083C8.82404 14.0731 9.35907 14.3123 9.99829 14.5186C10.6518 14.7299 11.3183 14.8372 11.9799 14.8372C12.6414 14.8372 13.3081 14.7299 13.9612 14.5188C14.601 14.3121 15.1359 14.0731 15.5517 13.808C15.9287 13.567 16.2526 13.3583 16.5417 13.1697C16.6838 13.0772 16.7715 13.027 16.8208 13.0009C17.2251 13.0117 17.5974 13.0834 17.9288 13.2145C18.2867 13.3563 18.5907 13.5454 18.8318 13.7761C19.0897 14.0228 19.3233 14.3291 19.5264 14.6865C19.7393 15.061 19.9111 15.4501 20.0367 15.8425C20.168 16.2526 20.2784 16.7049 20.3648 17.1866C20.4523 17.6757 20.5117 18.1353 20.5406 18.5528V18.5531C20.5704 18.9778 20.5854 19.4216 20.5856 19.8726C20.5854 20.7374 20.3412 21.3904 19.8386 21.8686V21.8686Z" fill="#4E4B66"></path>
-                                        </svg>
-                                    </span>
-                                  
-                                    <input type="text" placeholder="Your login name" id="signupFormEmail" name="email" class="" v-model="userName">
-                                    <span class="errors position-absolute">Enter your login name</span> <!---->
+                                @*  <div class="group_input position-relative">
+                                <span class="position-absolute">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.829 11.5609C13.4172 11.5609 14.7924 10.9913 15.9163 9.86735C17.0398 8.74364 17.6096 7.3687 17.6096 5.78026C17.6096 4.19238 17.04 2.81726 15.9161 1.69317C14.7922 0.56964 13.4171 0 11.829 0C10.2405 0 8.8656 0.56964 7.74188 1.69336C6.61816 2.81707 6.04834 4.19219 6.04834 5.78026C6.04834 7.3687 6.61816 8.74382 7.74188 9.86754C8.86597 10.9911 10.2411 11.5609 11.829 11.5609V11.5609ZM8.73651 2.6878C9.59875 1.82556 10.6102 1.40643 11.829 1.40643C13.0475 1.40643 14.0592 1.82556 14.9216 2.6878C15.7839 3.55023 16.2032 4.56188 16.2032 5.78026C16.2032 6.99901 15.7839 8.01048 14.9216 8.87291C14.0592 9.73533 13.0475 10.1545 11.829 10.1545C10.6106 10.1545 9.59912 9.73515 8.73651 8.87291C7.87408 8.01067 7.45477 6.99901 7.45477 5.78026C7.45477 4.56188 7.87408 3.55023 8.73651 2.6878Z" fill="#4E4B66"></path>
+                                <path d="M21.9435 18.4548C21.9111 17.9872 21.8456 17.477 21.7491 16.9383C21.6517 16.3956 21.5262 15.8826 21.3761 15.4136C21.2208 14.9289 21.0101 14.4503 20.7491 13.9916C20.4787 13.5156 20.1608 13.101 19.8041 12.7599C19.4312 12.403 18.9745 12.1161 18.4464 11.9068C17.9202 11.6986 17.337 11.5931 16.7131 11.5931C16.4681 11.5931 16.2312 11.6937 15.7736 11.9916C15.492 12.1752 15.1626 12.3876 14.7949 12.6226C14.4805 12.8229 14.0546 13.0106 13.5286 13.1805C13.0153 13.3466 12.4942 13.4308 11.9797 13.4308C11.4655 13.4308 10.9444 13.3466 10.4308 13.1805C9.90527 13.0107 9.47919 12.8231 9.16534 12.6227C8.80115 12.39 8.47156 12.1776 8.18573 11.9914C7.72852 11.6935 7.49158 11.593 7.24658 11.593C6.62256 11.593 6.03955 11.6986 5.51349 11.907C4.98578 12.1159 4.52893 12.4028 4.15558 12.7601C3.79889 13.1014 3.48102 13.5157 3.21075 13.9916C2.9502 14.4503 2.73926 14.9288 2.58398 15.4138C2.43402 15.8827 2.30859 16.3956 2.21118 16.9383C2.1145 17.4763 2.04913 17.9866 2.01672 18.4554C1.98486 18.9137 1.96875 19.3907 1.96875 19.8726C1.96875 21.1254 2.367 22.1396 3.15234 22.8876C3.92798 23.6257 4.9541 24 6.20233 24H17.7585C19.0063 24 20.0325 23.6257 20.8083 22.8876C21.5938 22.1402 21.9921 21.1256 21.9921 19.8724C21.9919 19.3888 21.9756 18.9119 21.9435 18.4548V18.4548ZM19.8386 21.8686C19.326 22.3564 18.6456 22.5935 17.7583 22.5935H6.20233C5.31482 22.5935 4.6344 22.3564 4.12207 21.8688C3.61945 21.3904 3.37518 20.7372 3.37518 19.8726C3.37518 19.4229 3.39001 18.9789 3.41968 18.5526C3.44861 18.1344 3.50775 17.675 3.59546 17.1868C3.68207 16.7047 3.7923 16.2522 3.9234 15.8426C4.04919 15.4499 4.22076 15.061 4.43353 14.6863C4.6366 14.3293 4.87024 14.0229 5.12805 13.7761C5.3692 13.5452 5.67316 13.3563 6.03131 13.2145C6.36255 13.0834 6.7348 13.0117 7.13892 13.0009C7.18817 13.027 7.27588 13.077 7.41797 13.1697C7.70709 13.3581 8.04034 13.5731 8.40875 13.8083C8.82404 14.0731 9.35907 14.3123 9.99829 14.5186C10.6518 14.7299 11.3183 14.8372 11.9799 14.8372C12.6414 14.8372 13.3081 14.7299 13.9612 14.5188C14.601 14.3121 15.1359 14.0731 15.5517 13.808C15.9287 13.567 16.2526 13.3583 16.5417 13.1697C16.6838 13.0772 16.7715 13.027 16.8208 13.0009C17.2251 13.0117 17.5974 13.0834 17.9288 13.2145C18.2867 13.3563 18.5907 13.5454 18.8318 13.7761C19.0897 14.0228 19.3233 14.3291 19.5264 14.6865C19.7393 15.061 19.9111 15.4501 20.0367 15.8425C20.168 16.2526 20.2784 16.7049 20.3648 17.1866C20.4523 17.6757 20.5117 18.1353 20.5406 18.5528V18.5531C20.5704 18.9778 20.5854 19.4216 20.5856 19.8726C20.5854 20.7374 20.3412 21.3904 19.8386 21.8686V21.8686Z" fill="#4E4B66"></path>
+                                </svg>
+                                </span>
+
+                                <input type="text" placeholder="Your login name" id="signupFormEmail" name="email" class="" v-model="userName">
+                                <span class="errors position-absolute">Enter your login name</span> <!---->
                                 </div>*@
                                 <div class="group_input position-relative">
                                     <span class="position-absolute">
@@ -138,7 +139,7 @@
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.3623 17.1751C11.9483 17.1751 11.6123 16.8391 11.6123 16.4251V14.2041C11.6123 13.7901 11.9483 13.4541 12.3623 13.4541C12.7763 13.4541 13.1123 13.7901 13.1123 14.2041V16.4251C13.1123 16.8391 12.7763 17.1751 12.3623 17.1751Z" fill="#4E4B66"></path>
                                         </svg>
                                     </span>
-                                    <input :type="inputType" placeholder="Enter the password" id="signupFormPassword" name="password" class="" v-model="password"> <span class="errors position-absolute">Enter password</span>
+                                    <input :type="inputType" placeholder="Enter the password" id="signupFormPassword" name="password" class="" v-model="password" required> <span class="errors position-absolute">Enter password</span>
                                     <span class="position-absolute icon_right">
                                         <svg v-if="showPassword" v-on:click="togglePasswordVisibility" id="show" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye ">
                                             <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path>
@@ -158,7 +159,7 @@
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.3623 17.1751C11.9483 17.1751 11.6123 16.8391 11.6123 16.4251V14.2041C11.6123 13.7901 11.9483 13.4541 12.3623 13.4541C12.7763 13.4541 13.1123 13.7901 13.1123 14.2041V16.4251C13.1123 16.8391 12.7763 17.1751 12.3623 17.1751Z" fill="#4E4B66"></path>
                                         </svg>
                                     </span>
-                                    <input :type="reType" placeholder="Enter the password again" id="signupFormRepass" name="repass" class="" v-model="ConfirmPassword">
+                                    <input :type="reType" placeholder="Enter the password again" id="signupFormRepass" name="repass" class="" v-model="ConfirmPassword" required>
                                     <span class="errors position-absolute">Enter the password again</span>
                                     <span class="position-absolute icon_right">
                                         <svg id="show-main" v-if="showRePassword" v-on:click="togglePasswordRe" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye ">
@@ -172,13 +173,13 @@
                                         </svg>
                                     </span> <!---->
                                 </div>
-                                
+
                                 @* <div class="group_input d-flex align-items-center mt-3 mb-0">
-                                    <input type="checkbox" id="signupFormAgree" name="agree">
-                                    <label for="signupFormAgree" class="mb-0 ml-1" style="padding-top: 9px; margin-left: 5px;">
-                                        Tôi đã đọc và đồng ý với
-                                        <a target="_blank" href="#"><span style="color: rgb(0, 171, 255);">Điều khoản sử dụng</span></a>
-                                    </label>
+                                <input type="checkbox" id="signupFormAgree" name="agree">
+                                <label for="signupFormAgree" class="mb-0 ml-1" style="padding-top: 9px; margin-left: 5px;">
+                                Tôi đã đọc và đồng ý với
+                                <a target="_blank" href="#"><span style="color: rgb(0, 171, 255);">Điều khoản sử dụng</span></a>
+                                </label>
                                 </div>
                                 <span class="color_orange ml-4">(*)</span> <span>Bằng việc đăng ký bạn đồng ý để vuihoc liên hệ tư vấn</span> <!----> *@
                                 <button type="submit" class="bg-primary">register</button>
@@ -191,7 +192,79 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#btnLogin").click(function () {
+            $("#modalLogin").modal('show');
+        });
+        $("#btnSignup").click(function () {
+            $("#modalRes").modal('show');
+        });
+        $("#buttonRes").click(function () {
+            $("#modalLogin").modal('hide');
+            $("#modalRes").modal('show');
+        });
+        $("#buttonLog").click(function () {
+            $("#modalRes").modal('hide');
+            $("#modalLogin").modal('show');
+        });
 
+        $("#loginFb").click(function () {
+            $("#modalLogin").modal('show');
+        });
+
+
+        $('#dropdownBtn').on('click', function (e) {
+            e.preventDefault();
+            $('#dropdownMenu').toggleClass('show');
+        });
+
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('#dropdownBtn').length) {
+                $('#dropdownMenu').removeClass('show');
+            }
+        });
+        $('.menu--moblie').hide();
+
+        function toggleMenu() {
+            $('.menu--moblie').toggleClass('show');
+            $('.tog-main').toggleClass('fa-bars fa-times');
+        }
+
+        $('.tog-main, .fas.fa-times').click(function () {
+            toggleMenu();
+        });
+
+        $(document).click(function (e) {
+            if (!$(e.target).closest('.menu--moblie').length && !$(e.target).hasClass('tog-main')) {
+                $('.menu--moblie').removeClass('show');
+                $('.tog-main').removeClass('fa-times').addClass('fa-bars');
+            }
+        });
+
+        $('.toggle-icon').click(function () {
+            $('.main-menu-mobile').toggleClass('activeMain');
+        });
+        $('.main-menu-mobile .grades').click(function (e) {
+            $('.main-menu-mobile').removeClass('activeMain');
+        });
+        $(document).click(function (e) {
+            if (!$(e.target).closest('.mainMobile').length) {
+                $('.main-menu-mobile').removeClass('activeMain');
+            }
+        });
+        $(".toggle-password").click(function () {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            input = $(this).parent().find("input");
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    })
+
+</script>
 <script asp-append-version="true">
     var navbar_vue = new Vue({
         el: '#navbar_vue',
@@ -252,8 +325,8 @@
                 await axios.post('/tai-khoan/dang-nhap', formData)
                     .then(res => {
                         if (res.data.code == 200) {
-                            //localStorage.removeItem("checkRes");
-                            //localStorage.setItem('checkLog', res.data.section);
+                            localStorage.removeItem("checkRes");
+                            localStorage.setItem('checkLog', res.data.section);
                             window.location.reload();
                         }
                         else if (res.data.code == 208) {
@@ -262,9 +335,11 @@
                         }
                         else if (res.data.code == 408) {
                             this.mess = res.data.message;
+                            console.log(this.mess);
 
                         } else {
                             this.mess = res.data.message;
+                            console.log(this.mess);
 
                         }
                     }).finally(() => {
@@ -278,17 +353,16 @@
                 formData.append('PasswordHash', this.password);
                 formData.append('ConfirmPassword', this.ConfirmPassword);
                 formData.append('FullName', this.FullName);
+                formData.append('UserName', this.userName);
                 formData.append('PhoneNumber', this.PhoneNumber);
                 formData.append('Email', this.Email);
                 formData.append('OptionRole', this.optionRole);
                 await axios.post('/tai-khoan/dang-ky-tai-khoan', formData)
                     .then(res => {
                         if (res.data.code == 200) {
-                            window.location.reload();
-                            //localStorage.setItem('checkRes', res.data.section);
-                            //this.mess = null;
-                            //$("#modalRes").modal('hide');
-                            //$("#modalLogin").modal('show');
+                            localStorage.setItem('checkRes', res.data.section);
+                            $("#modalRes").modal('hide');
+                            $("#modalLogin").modal('show');
                         }
                         else {
                             this.mess = res.data.message;
@@ -312,84 +386,6 @@
             }
         }
     });
-</script>
-<script>
-    $(document).ready(function () {
-        $("#btnLogin").click(function () {
-
-            $("#modalLogin").modal('show');
-        });
-        $("#btnSignup").click(function () {
-            $("#modalRes").modal('show');
-        });
-        $("#buttonRes").click(function () {
-            navbar_vue.mess = null;
-
-            $("#modalLogin").modal('hide');
-            $("#modalRes").modal('show');
-        });
-        $("#buttonLog").click(function () {
-            navbar_vue.mess = null;
-
-            $("#modalRes").modal('hide');
-            $("#modalLogin").modal('show');
-        });
-
-        $("#loginFb").click(function () {
-            $("#modalLogin").modal('show');
-        });
-
-
-        $('#dropdownBtn').on('click', function (e) {
-            e.preventDefault();
-            $('#dropdownMenu').toggleClass('show');
-        });
-
-        $(document).on('click', function (e) {
-            if (!$(e.target).closest('#dropdownBtn').length) {
-                $('#dropdownMenu').removeClass('show');
-            }
-        });
-        $('.menu--moblie').hide();
-
-        function toggleMenu() {
-            $('.menu--moblie').toggleClass('show');
-            $('.tog-main').toggleClass('fa-bars fa-times');
-        }
-
-        $('.tog-main, .fas.fa-times').click(function () {
-            toggleMenu();
-        });
-
-        $(document).click(function (e) {
-            if (!$(e.target).closest('.menu--moblie').length && !$(e.target).hasClass('tog-main')) {
-                $('.menu--moblie').removeClass('show');
-                $('.tog-main').removeClass('fa-times').addClass('fa-bars');
-            }
-        });
-
-        $('.toggle-icon').click(function () {
-            $('.main-menu-mobile').toggleClass('activeMain');
-        });
-        $('.main-menu-mobile .grades').click(function (e) {
-            $('.main-menu-mobile').removeClass('activeMain');
-        });
-        $(document).click(function (e) {
-            if (!$(e.target).closest('.mainMobile').length) {
-                $('.main-menu-mobile').removeClass('activeMain');
-            }
-        });
-        $(".toggle-password").click(function () {
-            $(this).toggleClass("fa-eye fa-eye-slash");
-            input = $(this).parent().find("input");
-            if (input.attr("type") == "password") {
-                input.attr("type", "text");
-            } else {
-                input.attr("type", "password");
-            }
-        });
-    })
-
 </script>
 
 

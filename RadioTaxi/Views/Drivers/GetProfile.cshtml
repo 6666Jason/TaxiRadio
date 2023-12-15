@@ -32,6 +32,7 @@
 </div>
 
 
+
 <section class="ftco-section" id="profile_vue">
     <div class="container profile-page">
         <div class="row">
@@ -67,7 +68,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/tai-khoan/hoc-tap">
+                                <a href="/driver/user">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-gray"><path d="M2 22H22" stroke="#4E4B66" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9.75 4V22H14.25V4C14.25 2.9 13.8 2 12.45 2H11.55C10.2 2 9.75 2.9 9.75 4Z" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 10V22H7V10C7 8.9 6.6 8 5.4 8H4.6C3.4 8 3 8.9 3 10Z" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 15V22H21V15C21 13.9 20.6 13 19.4 13H18.6C17.4 13 17 13.9 17 15Z" stroke="#4E4B66" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-orange"><path d="M2 22H22" stroke="#FF6609" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9.75 4V22H14.25V4C14.25 2.9 13.8 2 12.45 2H11.55C10.2 2 9.75 2.9 9.75 4Z" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 10V22H7V10C7 8.9 6.6 8 5.4 8H4.6C3.4 8 3 8.9 3 10Z" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 15V22H21V15C21 13.9 20.6 13 19.4 13H18.6C17.4 13 17 13.9 17 15Z" stroke="#FF6609" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
 
@@ -155,14 +156,14 @@
                                 <input type="text"  v-model="Address">
                             </div>
                         </div>
-                        @* <div class="row align-items-center mb-3">
+                        <div class="row align-items-center mb-3">
                             <div class="col-4 col-md-4">
                                 <label for="name" class="form-lable">Mobile</label>
                             </div>
                             <div class="col-8 col-md-8 input-form">
                                 <input type="text"   v-model="Mobile">
                             </div>
-                        </div> *@
+                        </div>
                         <div class="row align-items-center mb-3">
                             <div class="col-4 col-md-4">
                                 <label for="name" class="form-lable">Telephone</label>
@@ -325,7 +326,7 @@
                 ContactPerson: "@Html.Raw(Model.DriversMain.ContactPerson)",
                 Designation: "",
                 Address: "@Html.Raw(Model.DriversMain.Address)",
-                //Mobile: "@Html.Raw(Model.DriversMain.Mobile)",
+                Mobile: "@Html.Raw(Model.DriversMain.Mobile)",
                 Telephone: "@Html.Raw(Model.DriversMain.Telephone)",
                 FaxNumber: "",
                 Description: "",
@@ -383,7 +384,7 @@
 
                         formData.append('ContactPerson', this.ContactPerson);
                         formData.append('Address', this.Address);
-                        //formData.append('Mobile', this.Mobile);
+                        formData.append('Mobile', this.Mobile);
                         formData.append('Telephone', this.Telephone);
                         formData.append('Experience', this.ckMain);
                         formData.append('Email', this.Email);

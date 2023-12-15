@@ -179,38 +179,38 @@
                             </div>*@
                             <div class="mb-3">
                                 <label class="form-label">Driver Name </label>
-                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson">
+                                <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson" disabled>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Address </label>
-                                <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address">
+                                <input class="form-control" type="text" placeholder="address" aria-label="default input example" v-model="address" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Mobile </label>
-                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile">
+                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="mobile" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Telephone </label>
-                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="telephone">
+                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="telephone" disabled>
                             </div> 
                             <div class="mb-3">
                                 <label class="form-label">City </label>
-                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="City">
+                                <input class="form-control" type="text" placeholder="mobile" aria-label="default input example" v-model="City" disabled>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Experience </label>
-                                <textarea class="form-control" rows="8" type="text" placeholder="Experience" aria-label="default input example" v-model="experience"></textarea>
+                                <textarea class="form-control" rows="8" type="text" placeholder="Experience" aria-label="default input example" v-model="experience" disabled></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Email </label>
-                                <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email">
+                                <input class="form-control" type="email" placeholder="email" aria-label="default input example" v-model="email" disabled>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Package Type</label>
-                                <select v-model="packageMainID" class="form-control">
+                                <select v-model="packageMainID" class="form-control" disabled>
                                     <option v-for="tp in dataPackage" :key="tp.id" :value="tp.id">
                                         {{ tp.name }} - {{tp.nameCategory}}
                                     </option>
@@ -226,7 +226,7 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">Description</label>
-                                <textarea id="editor" v-model="ckName"> </textarea>
+                                <textarea class="form-control" v-model="ckName" rows="8" disabled> </textarea>
 
                             </div>
                         </div>
@@ -234,7 +234,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" v-on:click="resetData">Close</button>
-                    <button type="button" class="btn btn-primary" v-on:click="editItems">Save</button>
+                    @* <button type="button" class="btn btn-primary" v-on:click="editItems">Save</button> *@
                 </div>
             </div>
         </div>

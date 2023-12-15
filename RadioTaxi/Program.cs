@@ -68,7 +68,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     options.SlidingExpiration = true;
     options.AccessDeniedPath = "/Account/AccessDenied";
 });
-var connectionString = builder.Configuration.GetConnectionString("connMSSQL") ?? throw new InvalidCastException(nameof(args));
+var connectionString = builder.Configuration.GetConnectionString("ConnMSSQL") ?? throw new InvalidCastException(nameof(args));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString, sqlOptions =>
     {
@@ -112,15 +112,15 @@ app.UseStatusCodePages(async context =>
 });
 
 //chạy lần đầu để mirgration user và pass cho admin, chạy xong xóa đi!
-//using (var scope = app.Services.CreateScope())
-//{
-//    var services = scope.ServiceProvider;
-//    var initializer = services.GetRequiredService<IIdentityDataInitializer>();
-//    await initializer.SeedData(
-//        services.GetRequiredService<UserManager<ApplicationUser>>(),
-//        services.GetRequiredService<RoleManager<IdentityRole>>()
-//    );
-//}
+/*using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var initializer = services.GetRequiredService<IIdentityDataInitializer>();
+    await initializer.SeedData(
+        services.GetRequiredService<UserManager<ApplicationUser>>(),
+        services.GetRequiredService<RoleManager<IdentityRole>>()
+    );
+}*/
 
 
 app.Run();

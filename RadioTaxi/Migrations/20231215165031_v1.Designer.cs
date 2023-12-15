@@ -12,8 +12,8 @@ using RadioTaxi.Data;
 namespace RadioTaxi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231215084910_v-5")]
-    partial class v5
+    [Migration("20231215165031_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

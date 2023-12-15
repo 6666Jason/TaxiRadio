@@ -93,10 +93,11 @@ namespace RadioTaxi.Areas.AdminRadio.Controllers
             }
         }
         [HttpPost("/AdminRadio/AdminCategoryPackage/Update")]
-        public async Task<IActionResult> Update(CategoryPackage model)
+        public async Task<IActionResult> Update(CategoryPackage model )
         {
             try
             {
+                
                 var existingProduct = await _context.CategoryPackage.FirstOrDefaultAsync(x => x.ID == model.ID);
                 if (existingProduct == null)
                 {

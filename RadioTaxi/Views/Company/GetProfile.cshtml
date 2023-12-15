@@ -147,14 +147,14 @@
                                 <input type="text" id=""  v-model="Address">
                             </div>
                         </div>
-                        @* <div class="row align-items-center mb-3">
+                        <div class="row align-items-center mb-3">
                             <div class="col-4 col-md-4">
                                 <label for="name" class="form-lable">Mobile</label>
                             </div>
                             <div class="col-8 col-md-8 input-form">
                                 <input type="text" id=""  v-model="Mobile">
                             </div>
-                        </div> *@
+                        </div>
                         <div class="row align-items-center mb-3">
                             <div class="col-4 col-md-4">
                                 <label for="name" class="form-lable">Telephone</label>
@@ -291,7 +291,7 @@
                 ContactPerson: "@Html.Raw(Model.CompanyMain.ContactPerson)",
                 Designation: "@Html.Raw(Model.CompanyMain.Designation)",
                 Address: "@Html.Raw(Model.CompanyMain.Address)",
-                //Mobile: "@Html.Raw(Model.CompanyMain.Mobile)",
+                Mobile: "@Html.Raw(Model.CompanyMain.Mobile)",
                 Telephone: "@Html.Raw(Model.CompanyMain.Telephone)",
                 FaxNumber: "@Html.Raw(Model.CompanyMain.FaxNumber)",
                 Email: "@Html.Raw(Model.CompanyMain.Email)",
@@ -345,7 +345,7 @@
                         formData.append('ContactPerson', this.ContactPerson);
                         formData.append('Designation', this.Designation);
                         formData.append('Address', this.Address);
-                        //formData.append('Mobile', this.Mobile);
+                        formData.append('Mobile', this.Mobile);
                         formData.append('Telephone', this.Telephone);
                         formData.append('FaxNumber', this.FaxNumber);
                         formData.append('Email', this.Email);

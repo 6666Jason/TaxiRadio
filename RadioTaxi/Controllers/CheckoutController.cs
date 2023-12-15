@@ -38,7 +38,7 @@ namespace WebshopBo.Controllers
 
         [HttpGet("/success")]
 
-		public IActionResult Success()
+        public IActionResult Success()
         {
             ViewBag.userName = User.Identity.Name;
             var user = _context.ApplicationUser.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
@@ -49,9 +49,9 @@ namespace WebshopBo.Controllers
             return View();
 
         }
-		[HttpGet("/false")]
+        [HttpGet("/false")]
 
-		public IActionResult False()
+        public IActionResult False()
         {
             ViewBag.userName = User.Identity.Name;
             var user = _context.ApplicationUser.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();

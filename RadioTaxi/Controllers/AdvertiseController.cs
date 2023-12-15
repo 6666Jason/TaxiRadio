@@ -77,7 +77,8 @@ namespace RadioTaxi.Controllers
                                 CompanyMain = company,
                                 PackageList = package,
                                 CheckAds = false,
-                                AdvertiseMain = checkAds
+                                AdvertiseMain = checkAds,
+                                DriverCompany = true
                             };
                             return View(resultsMain);
 
@@ -89,6 +90,8 @@ namespace RadioTaxi.Controllers
                                 CompanyMain = company,
                                 PackageList = package,
                                 CheckAds = true,
+                                DriverCompany = true
+
                             };
                             return View(resultsMain);
                         }
@@ -100,6 +103,9 @@ namespace RadioTaxi.Controllers
                             CompanyMain = company,
                             PackageList = package,
                             CheckAds = true,
+                            DriverCompany = false
+
+
                         };
                         return View(resultsMain);
 

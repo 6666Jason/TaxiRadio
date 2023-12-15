@@ -1,8 +1,11 @@
 ﻿@model RadioTaxi.Models.ProfileVM.ProfileCRUD
-
+@using RadioTaxi.Services
+@inject Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> UserManager
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
 @{
     ViewData["Title"] = "Advertise Services";
+    bool check = await NavigationHelper.CheckLogin(UserManager, HttpContextAccessor);
     int remaining = 0;
     int daysInMonth = 30;
 
@@ -152,6 +155,19 @@
 
                         }
                     }
+                    else if (check == false)
+                    {
+                        <form method="post" action="/advertise/payads">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <h3 class="text-center">You must login</h3>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <a href="javascript:void(0)" id="loginAdvertise" class="btn btn-secondary w-100 py-3" type="submit">Login Now</a>
+                            </div>
+                        </form>
+                    }
                     else
                     {
                         <form method="post" action="/advertise/payads">
@@ -180,6 +196,10 @@
                 var selectedPrice = parseFloat($(this).find('option:selected').data('price'));
                 $('#paymentPrice').val(selectedPrice.toFixed(2));
             });
+            $("#loginAdvertise").click(function () {
+                $("#modalLogin").modal('show');
+            });
+
         });
     </script>
 }

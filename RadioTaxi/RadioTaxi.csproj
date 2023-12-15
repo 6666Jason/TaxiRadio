@@ -28,5 +28,6 @@
 	<ItemGroup>
 	  <Folder Include="Areas\AdminRadio\Data\" />
 	  <Folder Include="Areas\AdminRadio\Models\" />
+	  <Folder Include="Migrations\" />
 	</ItemGroup>
 </Project>

@@ -45,8 +45,9 @@ namespace RadioTaxi.Controllers
             ViewBag.user = HttpContext.User.Identity.Name;
             var listCompany = _context.Company.Include(x => x.ApplicationUserMain)
 				.Where(x => x.Status == true && x.Payment == true)
+                .OrderByDescending(x => x.CreateDate)
 				.Take(20)
-                .OrderByDescending(x => x.CreateDate).ToList();
+                .ToList();
 			
 			var result = new ViewMainCRUD
 			{

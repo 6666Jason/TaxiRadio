@@ -29,6 +29,7 @@ namespace RadioTaxi.Models.DriversVM
         public bool Status { get; set; }
         public bool Payment { get; set; }
         public bool CheckAds { get; set; }
+
         public IFormFile Path { get; set; }
 
 

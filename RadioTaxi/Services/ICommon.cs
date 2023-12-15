@@ -1,4 +1,5 @@
-﻿using RadioTaxi.Services;
+﻿using RadioTaxi.Models;
+using RadioTaxi.Services;
 
 namespace RadioTaxi.Services
 {
@@ -14,5 +15,8 @@ namespace RadioTaxi.Services
         List<String> RotateTeams(List<string> teams);
         IPayPal PaypalServices { get; }
         IPayPal PaypalCapture { get; }
+
+      /*  void SendEmail(ApplicationUser user, string otp);
+        void SendEmail(ApplicationUser applicationUser, object user);*/
     }
 }

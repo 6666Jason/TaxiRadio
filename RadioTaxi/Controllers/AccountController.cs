@@ -37,7 +37,7 @@ namespace ShopBanVe.Controllers
             _userManager = userManager;
             _icommon = icommon;
         }
-         
+
 
 
         [HttpGet]
@@ -55,30 +55,30 @@ namespace ShopBanVe.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginVM model)
         {
-            // Tìm người dùng theo tên đăng nhập bằng cách bất đồng bộ
             var user = await _userManager.FindByNameAsync(model.UserName);
 
-            // Kiểm tra xem người dùng có tồn tại và không kích hoạt không
+
             if (user != null && !user.IsAcitive)
             {
-                // Thêm lỗi mô hình và đặt thông báo view bag cho tài khoản bị khóa
                 ModelState.AddModelError(string.Empty, "Tài khoản bị khoá");
                 ViewBag.Er = "Tài khoản bị khoá";
             }
-            // Thực hiện đăng nhập với tên đăng nhập, mật khẩu và tùy chọn nhớ đăng nhập
+            //if (!_validate.HasRequestValidCaptchaEntry())
+            //{
+            //    return Json(new { code = 408, message = "Vui lòng nhập mã xác nhận hoặc kiểm tra lại mã xác nhận" });
+
+            //}
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: false);
 
-            // Kiểm tra xem quá trình đăng nhập có thành công không
             if (result.Succeeded)
             {
-                // Lấy danh sách vai trò của người dùng
                 var role = await _userManager.GetRolesAsync(user);
                 try
                 {
-                    // Tạo danh sách các quyền cho người dùng
+
                     var claims = new List<Claim> {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.Role, role.FirstOrDefault()!),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.Role, role.FirstOrDefault()!),
                 };
 
                     // Xây dựng ClaimsIdentity
@@ -98,19 +98,17 @@ namespace ShopBanVe.Controllers
                         CookieAuthenticationDefaults.AuthenticationScheme,
                         new ClaimsPrincipal(claimsIdentity),
                         authProperties);
-                    // Kiểm tra vai trò của người dùng và trả về kết quả JSON tương ứng
                     if (role.Contains("Admin"))
                     {
-                        return Json(new { code = 208, message = "Thành công", red = "/AdminRadio/AdminPage" });
+                        return Json(new { code = 208, message = "Success", red = "/AdminRadio/AdminPage" });
                     }
                     else
                     {
-                        return Json(new { code = 200, message = "Thành công", section = true });
+                        return Json(new { code = 200, message = "Success", section = true });
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý ngoại lệ (nếu có)
                     throw;
                 }
 
@@ -118,9 +116,9 @@ namespace ShopBanVe.Controllers
             }
             else
             {
-                // Thêm lỗi mô hình và trả về thông báo JSON về lỗi đăng nhập
-                ModelState.AddModelError(string.Empty, "Tài khoản hoặc mật khẩu bị lỗi");
-                return Json(new { code = 400, message = "Tài khoản hoặc mật khẩu không tồn tại" });
+
+                ModelState.AddModelError(string.Empty, "Account or password does not exist");
+                return Json(new { code = 400, message = "Account or password does not exist" });
 
             }
 
@@ -133,54 +131,48 @@ namespace ShopBanVe.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterVM model)
         {
-                // Tạo một đối tượng ApplicationUser từ dữ liệu đăng ký
-                ApplicationUser user = model;
-                user.UserName = model.Email;
 
-                // Kiểm tra xem đã tồn tại người dùng với tên đăng nhập này chưa
-                var existingUser = await _userManager.FindByNameAsync(user.UserName);
-                if (existingUser != null)
-                {
-                    // Username already exists
-                    return Json(new { code = 400, message = "The account already exists on the system" });
+            var existingUser = await _userManager.FindByNameAsync(model.UserName);
+            if (existingUser != null)
+            {
+                // Username already exists
+                ModelState.AddModelError("UserName", "The account already exists on the system");
+                return Json(new { code = 400, message = "The account already exists on the system" });
 
-                }
-            // Kiểm tra xem mật khẩu và xác nhận mật khẩu có giống nhau không
+            }
             if (model.ConfirmPassword != model.PasswordHash)
-                {
-                    return Json(new { code = 400, message = "Passwords are not the same" });
-                }
-            // Thiết lập các thông tin mặc định cho người dùng mới
+            {
+                return Json(new { code = 400, message = "Passwords are not the same" });
+            }
+            ApplicationUser user = model;
             user.AvatartPath = "/Upload/avatar/blank_avatar.png";
-                user.IsAcitive = true;
-                user.PhoneNumber = model.PhoneNumber;
-                user.Email = model.Email;
-                user.CreateDate = DateTime.Now;
-                user.FullName = model.FullName;
-            // Thực hiện việc tạo mới người dùng trong hệ thống
+            user.IsAcitive = true;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Email = model.Email;
+            user.CreateDate = DateTime.Now;
+            user.FullName = model.FullName;
+            user.UserName = model.UserName;
             var result = await _userManager.CreateAsync(user, model.PasswordHash);
 
-                if (result.Succeeded)
-                {
-                    //_icommon.SendEmail(user);
-                    // Set role member
-                    await _userManager.AddToRoleAsync(user, "User");
-                    // Automatically sign in the user
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+            if (result.Succeeded)
+            {
+                //_icommon.SendEmail(user);
+                // Set role member
+                await _userManager.AddToRoleAsync(user, "User");
+                // Automatically sign in the user
+                await _signInManager.SignInAsync(user, isPersistent: false);
 
-                // Trả về kết quả JSON thành công
                 return Json(new { code = 200, message = "Success", section = true });
-                }
-            // Xử lý lỗi nếu quá trình tạo tài khoản không thành công
+            }
             foreach (var error in result.Errors)
-                {
-                // Thêm lỗi vào ModelState và trả về thông báo JSON về lỗi mật khẩu
-                ModelState.AddModelError("", error.Description);
-                    return Json(new { code = 400, message = "The password must be 6 characters and not have special characters" });
+            {
 
-                }
-            // Trả về thông báo JSON khi có lỗi xảy ra trong quá trình đăng ký
-            return Json(new { code = 400, message = "Check fields" });
+                ModelState.AddModelError("", error.Description);
+                return Json(new { code = 400, message = "Password must have at least 1 uppercase letter and special character" });
+
+            }
+
+            return Json(new { code = 400, message = "Check the fields again" });
 
         }
 
@@ -189,15 +181,11 @@ namespace ShopBanVe.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-            // Đăng xuất người dùng khỏi phiên làm việc hiện tại sử dụng Cookie Authentication
             await HttpContext.SignOutAsync(
                CookieAuthenticationDefaults.AuthenticationScheme,
          new AuthenticationProperties { RedirectUri = "/Home/Index" }
           );
-            // Đăng xuất người dùng khỏi Identity
             await _signInManager.SignOutAsync();
-
-            // Chuyển hướng người dùng về trang chủ sau khi đăng xuất
             return Redirect("/");
         }
 
@@ -343,7 +331,7 @@ namespace ShopBanVe.Controllers
         //        });
         //    }
         //} 
-        
+
         //[HttpPost]
         //public async Task<IActionResult> ChangePassUserNameOTP(string email, string OTP, string newPass)
         //{

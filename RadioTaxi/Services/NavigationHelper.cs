@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using RadioTaxi.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
 
 namespace RadioTaxi.Services
 {
@@ -60,6 +61,21 @@ namespace RadioTaxi.Services
             }
             return "/drivers";
         }
+
+        public static async Task<bool> CheckLogin(UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor)
+        {
+            var httpContext = httpContextAccessor.HttpContext;
+            if (httpContext == null || !httpContext.User.Identity.IsAuthenticated)
+            {
+                return false;
+            }
+            var userCheck = await userManager.FindByNameAsync(httpContext.User.Identity.Name);
+            if (userCheck != null)
+            {
+                return true;
+            }
+            return false;
+         }
 
 
 
