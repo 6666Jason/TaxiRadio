@@ -243,6 +243,12 @@
                 });
             }
         },
+        ChangeAcive(item) {
+            fetch(`/Admin/UserManager/ChangeActive/${item.applicationUserMain.id}`)
+                .then(res => {
+                    window.location.reload()
+                })
+        },
         getItemsByIdDelete(id) {
             axios.get(`/AdminRadio/AdminCompany/GetByID/${id}`)
                 .then((response) => {

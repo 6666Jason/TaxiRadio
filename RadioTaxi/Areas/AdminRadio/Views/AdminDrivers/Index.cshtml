@@ -25,6 +25,7 @@
                     <th>Package Type</th>
                     @*<th>Created Date</th>*@
                     <th>Status</th>
+                    <th>Status Account</th>  
                     <th></th>
                 </tr>
             </thead>
@@ -76,6 +77,15 @@
 
                         </div>
                     </td>
+                   
+                   <td class="sherah-table__column-7 sherah-table__data-6">
+                            <div v-on:click="ChangeAcive(item)" v-bind:class="{ 'btn btn-danger ': !item.applicationUserMain.isAcitive, 'btn btn-success': item.applicationUserMain.isAcitive}">
+                                <span>
+                                    {{ item.applicationUserMain.isAcitive ?    'Is Active' : 'None' }}
+                                </span>
+
+                            </div>
+                    </td> 
 
                     <td style="width: fit-content">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Edit</button>

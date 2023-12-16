@@ -556,7 +556,7 @@ namespace RadioTaxi.Controllers
                 .Include(x => x.DriversMain)
                     .ThenInclude(x => x.ApplicationUserMain)
                 .Include(x => x.CompanyMain)
-                .FirstOrDefault(x => x.Status);
+                .FirstOrDefault(x => x.Status && x.IDDriver == driver.ID);
             if (partici != null)
             {
                 var items = new ViewMainCRUD

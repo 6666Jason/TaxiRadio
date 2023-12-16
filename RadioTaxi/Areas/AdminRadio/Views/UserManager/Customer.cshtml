@@ -21,7 +21,7 @@
                                     <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Number Phone</th>
                                     <th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Address</th>
                                     @*<th class="sherah-table__column-3 sherah-table__h3 text-nowrap">Ngày tham gia</th>*@
-                                    @*<th class="sherah-table__column-8 sherah-table__h7 text-nowrap">Status</th>*@
+                                    @* <th class="sherah-table__column-8 sherah-table__h7 text-nowrap">Status</th> *@
                                     <th class="sherah-table__column-9 sherah-table__h8 text-nowrap">Delete</th>
                                 </tr>
                             </thead>
@@ -79,20 +79,9 @@
                                             }
                                             else
                                             {
-                                                <td class="sherah-table__column-7 sherah-table__data-6">
-                                                    <div class="sherah-table__product-content" style="cursor:pointer" v-on:click="ChangeAcive(`@item.Id`)">
-                                                        @if (item.IsAcitive)
-                                                        {
-                                                            <div class="btn btn-success">Hoạt động</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="btn btn-warning">Tắt</div>
-                                                        }
-                                                    </div>
-                                                </td>
+                                               
                                             }*@
-
+                                           
                                             <td class="sherah-table__column-8 sherah-table__data-7">
                                                 @if (item.UserName == "supperadmin")
                                                 {
@@ -176,12 +165,7 @@
 
                 return formatter.format(amount);
             },
-            ChangeAcive(id) {
-                fetch(`/UserManager/ChangeActive?id=${id}`)
-                    .then(res => {
-                        window.location.reload()
-                    })
-            },
+          
             DeleteUser(id) {
                 Swal.fire({
                     title: 'Bạn chắc chắn muốn xóa',

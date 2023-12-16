@@ -18,6 +18,7 @@ namespace WebshopBo.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
         private readonly ICommon _iCommon;
+
         private readonly IWebHostEnvironment _iHostingEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IWebHostEnvironment _env;
@@ -38,7 +39,7 @@ namespace WebshopBo.Controllers
 
         [HttpGet("/success")]
 
-        public IActionResult Success()
+		public IActionResult Success()
         {
             ViewBag.userName = User.Identity.Name;
             var user = _context.ApplicationUser.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
@@ -49,9 +50,9 @@ namespace WebshopBo.Controllers
             return View();
 
         }
-        [HttpGet("/false")]
+		[HttpGet("/false")]
 
-        public IActionResult False()
+		public IActionResult False()
         {
             ViewBag.userName = User.Identity.Name;
             var user = _context.ApplicationUser.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
@@ -87,6 +88,8 @@ namespace WebshopBo.Controllers
                             _context.Company.Update(company);
                         }
                         redirectUrl = "/company/profile";
+                        /*_iCommon.SendEmail(ApplicationUser user);*/
+
                         break;
 
                     case "Driver":

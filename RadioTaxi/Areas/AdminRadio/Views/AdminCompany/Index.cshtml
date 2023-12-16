@@ -12,100 +12,110 @@
 
     </div>
     <div class="table-responsive">
-    <table class="table table-bordered" id="company_table">
-        <thead>
-            <tr>
-                <th>No</th>
-                @*<th>ContactPerson</th>*@
-                <th>CompanyName</th>
-                @*<th>Designation</th>*@
-                <th>Address</th>
-                @*<th>Mobile</th>*@
-                <th>Telephone</th>
-                @*<th>Fax Number</th>*@
-                <th>Email</th>
-                <th>MemberShipType</th>
-                <th>Package Type</th>
-                @*<th>Created Date</th>*@
-                <th>Status</th>
-                <th>Payment status</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="(item,index) in dataCompany" :key="index">
-                <td>{{index + 1}}</td>
-               
-                @*<td>
+        <table class="table table-bordered" id="company_table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    @*<th>ContactPerson</th>*@
+                    <th>CompanyName</th>
+                    @*<th>Designation</th>*@
+                    <th>Address</th>
+                    @*<th>Mobile</th>*@
+                    <th>Telephone</th>
+                    @*<th>Fax Number</th>*@
+                    <th>Email</th>
+                    <th>MemberShipType</th>
+                    <th>Package Type</th>
+                    @*<th>Created Date</th>*@
+                    <th>Status</th>
+                    <th>Status Account</th>
+
+                    <th>Payment status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in dataCompany" :key="index">
+                    <td>{{index + 1}}</td>
+
+                    @*<td>
                     {{item.contactPerson}}
 
-                </td> *@
-                <td>
-                    {{item.companyName}}
+                    </td> *@
+                    <td>
+                        {{item.companyName}}
 
-                </td>
-                @*<td>
+                    </td>
+                    @*<td>
                     {{item.designation}}
 
-                </td>*@
-                <td>
-                    {{item.address}}
+                    </td>*@
+                    <td>
+                        {{item.address}}
 
-                </td>
-                @*<td>
+                    </td>
+                    @*<td>
                     {{item.mobile}}
 
-                </td>*@
-                <td>
-                    {{item.telephone}}
+                    </td>*@
+                    <td>
+                        {{item.telephone}}
 
-                </td>
-                @*<td>
+                    </td>
+                    @*<td>
                     {{item.faxNumber}}
 
-                </td>*@
-                <td>
-                    {{item.email}}
+                    </td>*@
+                    <td>
+                        {{item.email}}
 
-                </td>
-                <td>
-                    {{item.memberShipType}}
+                    </td>
+                    <td>
+                        {{item.memberShipType}}
 
-                </td>
+                    </td>
 
-                <td>
-                    {{item.packageMain.name}}
+                    <td>
+                        {{item.packageMain.name}}
 
-                </td>
-                @*<td>
+                    </td>
+                    @*<td>
                     {{formatDate(new Date(item.createDate))}}
 
-                </td>*@
-                <td>
-                    <div v-on:click="handleTransaction(item)" v-bind:class="{ 'btn btn-danger ': !item.status, 'btn btn-success': item.status}">
-                        <span>
-                            {{ item.status ?    'Push top' : 'None' }}
-                        </span>
+                    </td>*@
+                    <td>
+                        <div v-on:click="handleTransaction(item)" v-bind:class="{ 'btn btn-danger ': !item.status, 'btn btn-success': item.status}">
+                            <span>
+                                {{ item.status ?    'Push top' : 'None' }}
+                            </span>
 
-                    </div>
-                </td>
-                <td>
-                    <div v-on:click="handlePayment(item)" v-bind:class="{ 'btn btn-danger ': !item.payment, 'btn btn-success': item.payment}">
-                        <span>
-                            {{ item.payment ?    'success' : 'false' }}
-                        </span>
+                        </div>
+                    </td>
+                    <td class="sherah-table__column-7 sherah-table__data-6">
+                        <div v-on:click="ChangeAcive(item)" v-bind:class="{ 'btn btn-danger ': !item.applicationUserMain.isAcitive, 'btn btn-success': item.applicationUserMain.isAcitive}">
+                            <span>
+                                {{ item.applicationUserMain.isAcitive ?    'Is Active' : 'None' }}
+                            </span>
 
-                    </div>
-                </td>
+                        </div>
+                    </td>
+                    <td>
+                        <div v-on:click="handlePayment(item)" v-bind:class="{ 'btn btn-danger ': !item.payment, 'btn btn-success': item.payment}">
+                            <span>
+                                {{ item.payment ?    'success' : 'false' }}
+                            </span>
 
-                <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Edit</button>
-                    <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
+                        </div>
+                    </td>
 
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Edit</button>
+                        <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 
@@ -120,13 +130,13 @@
                     <div class="row">
                         <div class="col-12">
                             @*<div class="mb-3">
-                                <label class="form-label">idCompany </label>
-                                <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idCompany">
+                            <label class="form-label">idCompany </label>
+                            <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idCompany">
                             </div>*@
                             <div class="mb-3">
                                 <label class="form-label">ContactPerson </label>
                                 <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="contactPerson">
-                            </div> 
+                            </div>
                             <div class="mb-3">
                                 <label class="form-label">CompanyName </label>
                                 <input class="form-control" type="text" placeholder="ContactPerson" aria-label="default input example" v-model="companyName">
@@ -194,8 +204,8 @@
                     <div class="row">
                         <div class="col-12">
                             @*<div class="mb-3">
-                                <label class="form-label">idCompany </label>
-                                <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idCompany">
+                            <label class="form-label">idCompany </label>
+                            <input class="form-control" type="text" placeholder="companyName" aria-label="default input example" v-model="idCompany">
                             </div>*@
                             <div class="mb-3">
                                 <label class="form-label">ContactPerson </label>

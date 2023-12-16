@@ -15,8 +15,8 @@ namespace RadioTaxi.Services
         List<String> RotateTeams(List<string> teams);
         IPayPal PaypalServices { get; }
         IPayPal PaypalCapture { get; }
+        Task SendEmailUserMatKhau(ApplicationUser user);
 
-      /*  void SendEmail(ApplicationUser user, string otp);
-        void SendEmail(ApplicationUser applicationUser, object user);*/
+       
     }
 }

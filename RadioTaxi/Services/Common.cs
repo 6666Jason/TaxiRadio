@@ -1,5 +1,8 @@
 ﻿using System.Text;
+using MailKit.Net.Smtp;
+using MimeKit;
 using RadioTaxi.Data;
+using RadioTaxi.Models;
 
 namespace RadioTaxi.Services
 {
@@ -142,6 +145,35 @@ namespace RadioTaxi.Services
             teams[teams.Count - 1] = temp;
 
             return teams;
+        }
+
+
+        public async Task SendEmailUserMatKhau(ApplicationUser user)
+        {
+
+            var messageToUser = new MimeMessage();
+            messageToUser.From.Add(new MailboxAddress("", _configuration.GetSection("EmailUserName").Value));
+            messageToUser.To.Add(MailboxAddress.Parse(user.Email));
+            messageToUser.Subject = "Khách đăng ký mới";
+            var builder = new BodyBuilder();
+
+            var emailTemplatePathUser = Path.Combine(_iHostingEnvironment.WebRootPath, "EmailUser.html");
+            var emailTemplateUser = File.ReadAllText(emailTemplatePathUser);
+
+            emailTemplateUser = emailTemplateUser.Replace("{nameUser}", user.Email ?? "");
+            emailTemplateUser = emailTemplateUser.Replace("{sdt}", user.PhoneNumber ?? "");
+            emailTemplateUser = emailTemplateUser.Replace("{otp}", user.OTP);
+
+            builder.HtmlBody = emailTemplateUser;
+            messageToUser.Body = builder.ToMessageBody();
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect(_configuration.GetSection("EmailHost").Value, 587, MailKit.Security.SecureSocketOptions.StartTls);
+                client.Authenticate(_configuration.GetSection("EmailUserName").Value, _configuration.GetSection("EmailPassword").Value);
+                client.Send(messageToUser);
+                client.Disconnect(true);
+            }
         }
     }
 }

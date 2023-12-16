@@ -42,6 +42,12 @@
     },
 
     methods: {
+        ChangeAcive(item) {
+            fetch(`/Admin/UserManager/ChangeActive/${item.applicationUserMain.id}`)
+                .then(res => {
+                    window.location.reload()
+                })
+        },
         openEditor() {
            
             if (!this.editor) {

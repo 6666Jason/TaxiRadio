@@ -36,7 +36,7 @@ namespace RadioTaxi.Areas.AdminRadio.Controllers
         [HttpGet("/AdminRadio/AdminDrivers/GetAll")]
         public IActionResult GetAll()
         {
-            var pr = _context.Drivers.Include(x=>x.PackageMain).OrderByDescending(x => x.ID).ToList(); 
+            var pr = _context.Drivers.Include(x=>x.PackageMain).Include(x=>x.ApplicationUserMain).OrderByDescending(x => x.ID).ToList(); 
             return Ok(pr);
         }
         [HttpPost("/AdminRadio/AdminDrivers/Add")]
