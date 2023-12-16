@@ -100,11 +100,11 @@ namespace ShopBanVe.Controllers
                         authProperties);
                     if (role.Contains("Admin"))
                     {
-                        return Json(new { code = 208, message = "Success", red = "/AdminRadio/AdminPage" });
+                        return Json(new { code = 208, message = "Thành công", red = "/AdminRadio/AdminPage" });
                     }
                     else
                     {
-                        return Json(new { code = 200, message = "Success", section = true });
+                        return Json(new { code = 200, message = "Thành công", section = true });
                     }
                 }
                 catch (Exception ex)
@@ -117,8 +117,8 @@ namespace ShopBanVe.Controllers
             else
             {
 
-                ModelState.AddModelError(string.Empty, "Account or password does not exist");
-                return Json(new { code = 400, message = "Account or password does not exist" });
+                ModelState.AddModelError(string.Empty, "Tài khoản hoặc mật khẩu bị lỗi");
+                return Json(new { code = 400, message = "Tài khoản hoặc mật khẩu không tồn tại" });
 
             }
 
@@ -162,17 +162,17 @@ namespace ShopBanVe.Controllers
                 // Automatically sign in the user
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
-                return Json(new { code = 200, message = "Success", section = true });
+                return Json(new { code = 200, message = "Thành công", section = true });
             }
             foreach (var error in result.Errors)
             {
 
                 ModelState.AddModelError("", error.Description);
-                return Json(new { code = 400, message = "Password must have at least 1 uppercase letter and special character" });
+                return Json(new { code = 400, message = "Mật khẩu phải có ít nhất 1 chữ hoa và ký tự đặc biệt" });
 
             }
 
-            return Json(new { code = 400, message = "Check the fields again" });
+            return Json(new { code = 400, message = "Kiểm tra lại các trường" });
 
         }
 
