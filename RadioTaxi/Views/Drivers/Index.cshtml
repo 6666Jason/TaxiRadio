@@ -72,7 +72,7 @@ else if (Model.DriversList.Any() && Model.DriversList != null)
                 <label class="row justify-content-center">Search Driver</label>
                 <div class="p-1 bg-light rounded rounded-pill shadow-sm ">
                     <div class="input-group">
-                        <input id="search" type="search" placeholder="address,city..." aria-describedby="button-addon1" style="background: transparent !important" class="form-control border-0 bg-light">
+                        <input id="search" type="search" placeholder="Driver Name..." aria-describedby="button-addon1" style="background: transparent !important" class="form-control border-0 bg-light">
                         <div class="input-group-append">
                             <button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
                         </div>
@@ -96,7 +96,7 @@ else if (Model.DriversList.Any() && Model.DriversList != null)
                         <div class="card">
                             <img class="card-img-top" src="@items.ApplicationUserMain.AvatartPath" alt="@items.ApplicationUserMain.FullName">
                             <div class="card-body">
-                                <h5 class="card-title">Contact person: @items.ContactPerson</h5>
+                                <h5 class="card-title">Driver Name: @items.ContactPerson</h5>
                                 <p class="card-text">City: @items.City</p>
                                 <p class="card-text">Address: @items.Address</p>
                                 <p class="card-text">Mobile: @items.Mobile</p>

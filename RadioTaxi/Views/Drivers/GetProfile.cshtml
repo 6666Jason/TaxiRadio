@@ -130,7 +130,7 @@
                         
                       
                       
-                        <div class="row align-items-center mb-3">
+                        @* <div class="row align-items-center mb-3">
 
                             <div class="col-4 col-md-4">
                                 <label for="name" class="form-lable">ID Driver</label>
@@ -138,13 +138,13 @@
                             <div class="col-8 col-md-8 input-form">
                                 <input type="text"  value="@Model.DriversMain.IDDriver" disabled>
                             </div>
-                        </div>
+                        </div> *@
                         <div class="row align-items-center mb-3">
                             <div class="col-4 col-md-4">
-                                <label for="name" class="form-lable">Contact Person</label>
+                                <label for="name" class="form-lable">Driver Name</label>
                             </div>
                             <div class="col-8 col-md-8 input-form">
-                                <input type="text"   v-model="ContactPerson">
+                                <input type="text" v-model="ContactPerson" disabled>
                             </div>
                         </div>
 
