@@ -5,26 +5,26 @@
 </style>
 <div id="drivers_vue">
     <div>
-        <div class="p-3">
+        @*<div class="p-3">
             <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#Add" v-on:click="resetData">
                 Add New
             </button>
 
-        </div>
+        </div>*@
         <table class="table table-bordered" id="drivers_table">
-            <thead>
+            <thead> 
                 <tr>
                     <th>No</th>
                     @*<th>IDDriver</th>*@
                     <th>Driver Name</th>
                     <th>Address</th>
-                    <th>Mobile</th>
+                    @* <th>Mobile</th *@>
                     @*<th>Telephone</th>*@
-                    <th>Experience</th>
+                    @*<th>Experience</th>*@
                     <th>Email</th>
-                    <th>Package Type</th>
+                    @*<th>Package Type</th>*@
                     @*<th>Created Date</th>*@
-                    <th>Status</th>
+                    @*<th>Status</th>*@
                     <th>Status Account</th>  
                     <th></th>
                 </tr>
@@ -44,39 +44,39 @@
                         {{item.address}}
 
                     </td>
-                    <td>
+                    @* <td>
                         {{item.mobile}}
 
-                    </td>
+                    </td> *@
                     @*<td>
                         {{item.telephone}}
 
                     </td>*@
-                    <td>
+                    @*<td>
                         {{item.experience}}
 
-                    </td>
+                    </td>*@
                     <td>
                         {{item.email}}
 
                     </td>
 
-                    <td>
+                    @*<td>
                         {{item.packageMain.name}}
 
-                    </td>
+                    </td>*@
                     @*<td>
                         {{formatDate(new Date(item.createDate))}}
 
                     </td>*@
-                    <td>
+                    @*<td>
                         <div v-on:click="handleTransaction(item)" v-bind:class="{ 'btn btn-danger ': !item.status, 'btn btn-success': item.status}">
                             <span>
                                 {{ item.status ?    'Push top' : 'None' }}
                             </span>
 
                         </div>
-                    </td>
+                    </td>*@
                    
                    <td class="sherah-table__column-7 sherah-table__data-6">
                             <div v-on:click="ChangeAcive(item)" v-bind:class="{ 'btn btn-danger ': !item.applicationUserMain.isAcitive, 'btn btn-success': item.applicationUserMain.isAcitive}">
@@ -88,8 +88,8 @@
                     </td> 
 
                     <td style="width: fit-content">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Edit</button>
-                        <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Details</button>
+                            
 
                     </td>
                 </tr>

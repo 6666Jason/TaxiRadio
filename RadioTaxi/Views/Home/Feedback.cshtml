@@ -117,15 +117,15 @@
                             if (response.data.code == 404) {
                                 Swal.fire({
                                     icon: 'error',
-                                    title: 'Lỗi',
-                                    text: `${response.data.message}`,
+                                    title: 'Error',
+                                    //text: `${response.data.message}`,
                                     confirmButtonText: 'OK'
                                 });
                             } else {
                                 Swal.fire({
                                     icon: 'success',
-                                    title: 'Thành công',
-                                    text: `${response.data.message}`,
+                                    title: 'Success',
+                                    //text: `${response.data.message}`,
                                     confirmButtonText: 'OK',
                                 });
                             }
@@ -138,8 +138,8 @@
 
                         Swal.fire({
                             icon: 'error',
-                            title: 'Lỗi',
-                            text: 'Đã có lỗi xảy ra',
+                            title: 'Error',
+                            text: 'An error has occurred',
                             confirmButtonText: 'OK'
                         });
                     }

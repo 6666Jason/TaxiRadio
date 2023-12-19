@@ -5,17 +5,17 @@
 </style>
 <div id="advertisen_vue">
     <div>
-        <div class="p-3">
+        @*<div class="p-3">
             <button type="button" class="btn btn-success p-2" data-bs-toggle="modal" data-bs-target="#Add" v-on:click="resetData">
                 Add New
             </button>
 
-        </div>
+        </div>*@
         <table class="table table-bordered" id="adv_table">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Company Name</th>
+                    <th>Advertiser</th>
                     @*<th>Designation</th>*@
                     <th>Address</th>
                     @*<th>Mobile</th>*@
@@ -74,7 +74,7 @@
                     </td>*@
 
                     <td style="width: fit-content">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Update</button>
+                        @*<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Edit" v-on:click="getItemsById(item.id)">Update</button>*@
                         <button type="button" class="btn btn-danger" v-on:click="getItemsByIdDelete(item.id)">Delete</button>
 
                     </td>

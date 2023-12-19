@@ -29,6 +29,8 @@ namespace RadioTaxi.Areas.AdminRadio.Controllers
             _userManager = userManager;
             _env = env;
         }
+        [Authorize]
+        //[Authorize(AuthenticationSchemes = "MyCookieAuthenticationScheme")]
         [HttpGet("/AdminRadio/AdminPage")]
         public IActionResult Index()
         {

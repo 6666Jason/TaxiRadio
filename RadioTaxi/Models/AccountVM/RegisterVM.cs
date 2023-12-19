@@ -12,20 +12,20 @@ namespace RadioTaxi.Models.AccountVM
        
 
         [Display(Name = "Mật Khẩu")]
-        [Required(ErrorMessage = "Mật khẩu không được để trống")]
+        [Required(ErrorMessage = "Password must not be empty.")]
         [DataType(DataType.Password)]
         public string PasswordHash { get; set; }
 
         [Display(Name = "Xác nhận mật khẩu")]
         [DataType(DataType.Password)]
-        [Compare("PasswordHash", ErrorMessage = "Mật khẩu không khớp")]
+        [Compare("PasswordHash", ErrorMessage = "Password does not match.")]
         public string ConfirmPassword { get; set; }
 
 
-        [Required(ErrorMessage = "Số điện thoại không được để trống")]
+        [Required(ErrorMessage = "Phone number must not be empty.")]
         public string PhoneNumber { get; set; }
         
-        [Required(ErrorMessage = "Không để trống email")]
+        [Required(ErrorMessage = "Email must not be empty.")]
         public string Email { get; set; }
         public DateTime CreateDate { get; set; }
 
